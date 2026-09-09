@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TNT APK 2.0</title>
+<style>
+  body{font-family:Arial,sans-serif;background:#111;color:#fff;display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0}
+  .box{width:min(92%,420px);background:#1c1c1c;padding:28px;border-radius:18px;text-align:center;box-shadow:0 10px 35px #0008}
+  h1{margin-top:0}
+  #key{font-size:20px;font-weight:bold;background:#000;padding:18px;border-radius:10px;margin:20px 0;word-break:break-all;user-select:all}
+  button{border:0;border-radius:10px;padding:13px 18px;margin:5px;cursor:pointer;font-weight:bold}
+  #next{background:#fff;color:#111}
+  #copy{background:#333;color:#fff}
+  small{color:#aaa}
+</style>
+</head>
+<body>
+<div class="box">
+  <h1>TNT APK 2.0</h1>
+  <div id="key"></div>
+  <button id="next">GERAR KEY</button>
+  <button id="copy">COPIAR</button>
+  <small id="counter"></small>
+</div>
+
+<script>
+const keys = [
+  "TNT_VIP-zc2694",
+  "TNT_VIP-ae6921",
+  "TNT_VIP-hs6423",
+  "TNT_VIP-et0206",
+  "TNT_VIP-nh0656",
+  "TNT_VIP-jo4045",
+  "TNT_VIP-yg1619"
+];
+
+let index = 0;
+
+function cleanKey(key) {
+  return key.replace(/\s+/g, "");
+}
+
+function generateKey() {
+  const key = cleanKey(keys[index]);
+  document.getElementById("key").textContent = key;
+  document.getElementById("counter").textContent =
+    `K${index + 1} de 7 • próximo: K${(index + 1) % 7 + 1}`;
+  index = (index + 1) % keys.length;
+}
+
+document.getElementById("next").addEventListener("click", generateKey);
+
+document.getElementById("copy").addEventListener("click", async () => {
+  const key = document.getElementById("key").textContent;
+  if (!key) return;
+  await navigator.clipboard.writeText(cleanKey(key));
+});
+
+generateKey();
+</script>
+</body>
+</html>
