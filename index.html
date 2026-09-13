@@ -3,263 +3,550 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TNT APK 2.0</title>
+
+<title>TNT APK 2.0 - Gerador de Key</title>
 
 <style>
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(0, 120, 255, .20), transparent 30%),
-    radial-gradient(circle at 80% 80%, rgba(0, 180, 255, .15), transparent 30%),
-    linear-gradient(135deg, #020711, #001b3d, #020711);
-  color: white;
-  font-family: Arial, sans-serif;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    background:
+        radial-gradient(circle at 50% 20%, rgba(0,110,255,.25), transparent 35%),
+        radial-gradient(circle at 20% 80%, rgba(0,60,255,.18), transparent 30%),
+        linear-gradient(145deg, #020612, #00112c 45%, #00030a);
+    overflow-x: hidden;
+}
+
+/* Fundo tecnológico */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .35;
+    background-image:
+        linear-gradient(rgba(0,120,255,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,120,255,.08) 1px, transparent 1px);
+    background-size: 35px 35px;
+}
+
+/* Partículas */
+.particle {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    background: #00aaff;
+    border-radius: 50%;
+    box-shadow: 0 0 15px #008cff;
+    animation: float 5s infinite ease-in-out;
+}
+
+.p1 { top: 15%; left: 12%; }
+.p2 { top: 32%; right: 10%; animation-delay: 1s; }
+.p3 { top: 65%; left: 8%; animation-delay: 2s; }
+.p4 { top: 80%; right: 15%; animation-delay: 3s; }
+
+@keyframes float {
+    0%,100% {
+        transform: translateY(0);
+        opacity: .4;
+    }
+    50% {
+        transform: translateY(-25px);
+        opacity: 1;
+    }
 }
 
 .container {
-  width: 92%;
-  max-width: 430px;
-  text-align: center;
+    width: min(94%, 620px);
+    margin: auto;
+    padding: 35px 0 45px;
+}
+
+/* Logo */
+.logo-area {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .logo {
-  font-size: 42px;
-  font-weight: 900;
-  margin-bottom: 8px;
-  text-shadow: 0 0 20px rgba(0, 140, 255, .7);
+    font-size: clamp(42px, 10vw, 78px);
+    font-weight: 1000;
+    letter-spacing: -3px;
+    line-height: .95;
+    text-transform: uppercase;
+
+    background: linear-gradient(
+        180deg,
+        #ffffff 5%,
+        #8dd8ff 35%,
+        #007bff 70%,
+        #004cff
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    filter:
+        drop-shadow(0 0 5px #008cff)
+        drop-shadow(0 0 20px rgba(0,100,255,.7));
 }
 
 .logo span {
-  color: #008cff;
+    color: #008cff;
 }
 
 .subtitle {
-  color: #8993a3;
-  letter-spacing: 4px;
-  font-size: 14px;
-  margin-bottom: 18px;
+    margin-top: 12px;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 8px;
+    color: #dcecff;
+    text-shadow: 0 0 12px #008cff;
 }
 
+/* Online */
 .online {
-  color: #00e676;
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 25px;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 18px;
+    padding: 8px 22px;
+    border: 1px solid #00ff88;
+    border-radius: 30px;
+    color: #00ff88;
+    font-weight: bold;
+    box-shadow:
+        0 0 10px rgba(0,255,120,.35),
+        inset 0 0 12px rgba(0,255,120,.08);
 }
 
-.dot {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  margin-right: 7px;
-  border-radius: 50%;
-  background: #00e676;
-  box-shadow: 0 0 12px #00e676;
+.online-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #00ff66;
+    box-shadow: 0 0 14px #00ff66;
 }
 
+/* Card */
 .card {
-  background: rgba(7, 12, 22, .95);
-  border: 1px solid rgba(0, 140, 255, .4);
-  border-radius: 25px;
-  padding: 35px 25px;
-  box-shadow: 0 0 35px rgba(0, 100, 255, .15);
+    position: relative;
+    margin-top: 28px;
+    padding: 34px 24px;
+    border: 1px solid rgba(0,150,255,.7);
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8,20,40,.95),
+            rgba(0,5,15,.96)
+        );
+
+    box-shadow:
+        0 0 15px rgba(0,100,255,.35),
+        0 0 50px rgba(0,80,255,.18),
+        inset 0 0 30px rgba(0,110,255,.06);
+}
+
+/* Borda brilhante */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 29px;
+    padding: 2px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #008cff,
+        #00d9ff,
+        #008cff,
+        transparent
+    );
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
+    pointer-events: none;
 }
 
 .card h2 {
-  font-size: 27px;
-  margin-bottom: 12px;
+    text-align: center;
+    font-size: 31px;
+    margin-bottom: 12px;
+    text-shadow: 0 0 12px rgba(0,150,255,.8);
 }
 
 .description {
-  color: #8993a3;
-  line-height: 1.5;
-  margin-bottom: 28px;
+    text-align: center;
+    color: #9cb8d5;
+    line-height: 1.5;
+    font-size: 16px;
+    margin-bottom: 25px;
 }
 
-.generate {
-  width: 100%;
-  padding: 19px;
-  border: none;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #006eff, #00a8ff);
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 0 22px rgba(0, 130, 255, .45);
+/* Botão gerar */
+.generate-btn {
+    width: 100%;
+    border: 0;
+    border-radius: 18px;
+    padding: 21px 18px;
+    cursor: pointer;
+
+    color: white;
+    font-size: 20px;
+    font-weight: 900;
+
+    background:
+        linear-gradient(90deg, #005eff, #008cff, #005eff);
+
+    box-shadow:
+        0 0 12px #0077ff,
+        0 0 35px rgba(0,100,255,.55);
+
+    transition: .2s;
 }
 
-.generate:active {
-  transform: scale(.98);
+.generate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 0 20px #008cff,
+        0 0 50px rgba(0,100,255,.75);
 }
 
-#result {
-  display: none;
-  margin-top: 22px;
-  padding: 18px;
-  border-radius: 13px;
-  border: 1px solid #008cff;
-  background: rgba(0, 100, 200, .12);
+.generate-btn:active {
+    transform: scale(.98);
 }
 
-.key-label {
-  color: #8993a3;
-  font-size: 13px;
-  margin-bottom: 8px;
+/* Resultado */
+.result {
+    display: none;
+    margin-top: 22px;
+    padding: 22px;
+    border: 1px solid rgba(0,150,255,.65);
+    border-radius: 20px;
+    background: rgba(0,10,25,.8);
 }
 
-#key {
-  color: #00a8ff;
-  font-size: 18px;
-  font-weight: bold;
-  word-break: break-all;
-  text-shadow: 0 0 10px rgba(0, 160, 255, .6);
+.result.show {
+    display: block;
+    animation: appear .4s ease;
 }
 
-.networks {
-  margin-top: 30px;
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.network-title {
-  color: #8993a3;
-  font-size: 13px;
-  letter-spacing: 1px;
-  margin-bottom: 14px;
+.result-title {
+    text-align: center;
+    color: #20bfff;
+    font-weight: 900;
+    margin-bottom: 14px;
 }
 
-.network-button {
-  display: block;
-  width: 100%;
-  padding: 15px;
-  margin-top: 10px;
-  border-radius: 12px;
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-  transition: .2s;
+.key-box {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.key {
+    flex: 1;
+    min-width: 0;
+    padding: 17px 12px;
+    border-radius: 12px;
+    border: 1px solid #008cff;
+    background: #020a18;
+    color: #67cfff;
+    font-weight: 900;
+    font-size: 15px;
+    text-align: center;
+    word-break: break-all;
+    box-shadow: inset 0 0 15px rgba(0,110,255,.08);
+}
+
+.copy-btn {
+    border: 1px solid #00aaff;
+    border-radius: 12px;
+    padding: 16px 14px;
+    cursor: pointer;
+
+    color: white;
+    font-weight: 900;
+
+    background: #06182c;
+    box-shadow: 0 0 12px rgba(0,150,255,.3);
+}
+
+.copy-btn:active {
+    transform: scale(.95);
+}
+
+/* Redes */
+.social-title {
+    text-align: center;
+    margin: 30px 0 15px;
+    font-size: 19px;
+    font-weight: 900;
+    color: #b9dcff;
+    letter-spacing: 2px;
+}
+
+.social {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.social a {
+    text-decoration: none;
+    color: white;
+    font-weight: 900;
+    font-size: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    padding: 17px;
+    border-radius: 16px;
+
+    transition: .2s;
 }
 
 .whatsapp {
-  background: #128c4a;
-  box-shadow: 0 0 15px rgba(18, 140, 74, .3);
+    background: linear-gradient(90deg, #008f3d, #00c95a);
+    box-shadow: 0 0 20px rgba(0,255,100,.25);
 }
 
 .youtube {
-  background: #d90000;
-  box-shadow: 0 0 15px rgba(217, 0, 0, .3);
+    background: linear-gradient(90deg, #a80000, #ff0000);
+    box-shadow: 0 0 20px rgba(255,0,0,.25);
 }
 
-.network-button:active {
-  transform: scale(.98);
+.social a:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.15);
 }
 
+.icon {
+    font-size: 23px;
+}
+
+/* Footer */
 .footer {
-  margin-top: 25px;
-  color: #646d7a;
-  font-size: 12px;
+    text-align: center;
+    margin-top: 30px;
+    color: #7891ad;
+    font-size: 13px;
+    letter-spacing: 3px;
 }
 
 .footer strong {
-  color: #008cff;
+    display: block;
+    margin-top: 7px;
+    color: #36aaff;
+    font-size: 16px;
+}
+
+/* Celular */
+@media (max-width: 480px) {
+    .container {
+        padding-top: 25px;
+    }
+
+    .card {
+        padding: 27px 17px;
+        border-radius: 23px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+        letter-spacing: 5px;
+    }
+
+    .card h2 {
+        font-size: 26px;
+    }
+
+    .key-box {
+        flex-direction: column;
+    }
+
+    .key,
+    .copy-btn {
+        width: 100%;
+    }
 }
 </style>
 </head>
 
 <body>
 
+<div class="particle p1"></div>
+<div class="particle p2"></div>
+<div class="particle p3"></div>
+<div class="particle p4"></div>
+
 <div class="container">
 
-  <div class="logo">
-    TNT <span>APK 2.0</span>
-  </div>
+    <div class="logo-area">
 
-  <div class="subtitle">
-    GERADOR DE KEY
-  </div>
+        <div class="logo">
+            TNT <span>APK</span> 2.0
+        </div>
 
-  <div class="online">
-    <span class="dot"></span>
-    ONLINE
-  </div>
+        <div class="subtitle">
+            GERADOR DE KEY
+        </div>
 
-  <div class="card">
-
-    <h2>Gere sua Key</h2>
-
-    <p class="description">
-      Gere sua key gratuitamente para acessar o TNT APK 2.0.
-    </p>
-
-    <button class="generate" onclick="gerarKey()">
-      🔑 GERAR UMA KEY
-    </button>
-
-    <div id="result">
-
-      <div class="key-label">
-        SUA KEY FOI GERADA:
-      </div>
-
-      <div id="key"></div>
+        <div class="online">
+            <span class="online-dot"></span>
+            ONLINE
+        </div>
 
     </div>
 
-    <div class="networks">
+    <div class="card">
 
-      <div class="network-title">
-        ENTRE NAS NOSSAS REDES
-      </div>
+        <h2>🔑 GERE SUA KEY</h2>
 
-      <a
-        class="network-button whatsapp"
-        href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        🟢 ENTRAR NO CANAL DO WHATSAPP
-      </a>
+        <p class="description">
+            Gere sua key gratuitamente para acessar o
+            <strong>TNT APK 2.0</strong>.
+        </p>
 
-      <a
-        class="network-button youtube"
-        href="https://youtube.com/@tntapk2.0?si=n9vIQ3Nx5t93lImk"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        🔴 ENTRAR NO CANAL DO YOUTUBE
-      </a>
+        <button class="generate-btn" onclick="gerarKey()">
+            🔑 &nbsp; GERAR UMA KEY
+        </button>
+
+        <div class="result" id="resultado">
+
+            <div class="result-title">
+                ✓ SUA KEY FOI GERADA:
+            </div>
+
+            <div class="key-box">
+
+                <div class="key" id="key">
+                    TNT-APK-KEY-PROXY-V8
+                </div>
+
+                <button class="copy-btn" onclick="copiarKey()">
+                    📋 COPIAR
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="social-title">
+            NOSSAS REDES
+        </div>
+
+        <div class="social">
+
+            <a
+                class="whatsapp"
+                href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x"
+                target="_blank"
+            >
+                <span class="icon">💬</span>
+                ENTRAR NO CANAL DO WHATSAPP
+                <span>›</span>
+            </a>
+
+            <a
+                class="youtube"
+                href="https://youtube.com/@tntapk2.0?si=n9vIQ3Nx5t93lImk"
+                target="_blank"
+            >
+                <span class="icon">▶</span>
+                ENTRAR NO CANAL DO YOUTUBE
+                <span>›</span>
+            </a>
+
+        </div>
 
     </div>
 
-  </div>
-
-  <div class="footer">
-    CRIADO POR <strong>TNT APK 2.0</strong>
-  </div>
+    <div class="footer">
+        CRIADO POR
+        <strong>TNT APK 2.0</strong>
+    </div>
 
 </div>
 
 <script>
 
+const MINHA_KEY = "TNT-APK-KEY-PROXY-V8";
+
 function gerarKey() {
 
-  const key = "TNT-APK-KEY-GRATIS-SAFE-V7";
+    const resultado = document.getElementById("resultado");
 
-  document.getElementById("key").textContent = key;
+    resultado.classList.add("show");
 
-  document.getElementById("result").style.display = "block";
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+    });
+}
 
+function copiarKey() {
+
+    const key = document.getElementById("key").textContent.trim();
+    const botao = document.querySelector(".copy-btn");
+
+    navigator.clipboard.writeText(key).then(() => {
+
+        botao.textContent = "✓ COPIADO!";
+
+        setTimeout(() => {
+            botao.textContent = "📋 COPIAR";
+        }, 1800);
+
+    }).catch(() => {
+
+        const area = document.createElement("textarea");
+        area.value = key;
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand("copy");
+        area.remove();
+
+        botao.textContent = "✓ COPIADO!";
+
+        setTimeout(() => {
+            botao.textContent = "📋 COPIAR";
+        }, 1800);
+    });
 }
 
 </script>
 
 </body>
-</html>
+          </html>
