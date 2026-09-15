@@ -7,302 +7,325 @@
 
 <style>
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  min-height: 100vh;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #fff;
-  background:
-    radial-gradient(circle at 50% 20%, rgba(0,110,255,.25), transparent 35%),
-    radial-gradient(circle at 20% 80%, rgba(0,60,255,.18), transparent 30%),
-    linear-gradient(145deg, #020612, #00112c 45%, #00030a);
-  overflow-x: hidden;
-  padding: 25px 0;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    background:
+        radial-gradient(circle at 50% 20%, rgba(0,110,255,.25), transparent 35%),
+        radial-gradient(circle at 20% 80%, rgba(0,60,255,.18), transparent 30%),
+        linear-gradient(145deg, #020612, #00112c 45%, #00030a);
+    overflow-x: hidden;
+    padding: 25px 0;
 }
 
+/* Grade tecnológica do fundo */
 body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: .35;
-  background-image:
-    linear-gradient(rgba(0,120,255,.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,120,255,.08) 1px, transparent 1px);
-  background-size: 35px 35px;
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .35;
+    background-image:
+        linear-gradient(rgba(0,120,255,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,120,255,.08) 1px, transparent 1px);
+    background-size: 35px 35px;
 }
 
 .container {
-  width: min(94%, 620px);
-  margin: auto;
-  text-align: center;
-  position: relative;
-  z-index: 1;
+    width: min(94%, 620px);
+    margin: auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* Logo */
+.logo-area {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .logo {
-  font-size: clamp(42px, 10vw, 78px);
-  font-weight: 1000;
-  letter-spacing: -3px;
-  line-height: .95;
-  text-transform: uppercase;
-  color: #fff;
-  text-shadow:
-    0 0 5px #008cff,
-    0 0 20px rgba(0,100,255,.7);
+    font-size: clamp(42px, 10vw, 78px);
+    font-weight: 1000;
+    letter-spacing: -3px;
+    line-height: .95;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow:
+        0 0 5px #008cff,
+        0 0 20px rgba(0,100,255,.7);
 }
 
 .logo span {
-  color: #008cff;
+    color: #008cff;
 }
 
 .subtitle {
-  margin-top: 12px;
-  font-size: 20px;
-  font-weight: 800;
-  letter-spacing: 8px;
-  color: #dcecff;
-  text-shadow: 0 0 12px #008cff;
+    margin-top: 12px;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 8px;
+    color: #dcecff;
+    text-shadow: 0 0 12px #008cff;
 }
 
+/* Status */
 .online {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  margin-top: 18px;
-  padding: 8px 22px;
-  border: 1px solid #00ff88;
-  border-radius: 30px;
-  color: #00ff88;
-  font-weight: bold;
-  box-shadow:
-    0 0 10px rgba(0,255,120,.35),
-    inset 0 0 12px rgba(0,255,120,.08);
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 18px;
+    padding: 8px 22px;
+    border: 1px solid #00ff88;
+    border-radius: 30px;
+    color: #00ff88;
+    font-weight: bold;
+    box-shadow:
+        0 0 10px rgba(0,255,120,.35),
+        inset 0 0 12px rgba(0,255,120,.08);
 }
 
 .online-dot {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: #00ff66;
-  box-shadow: 0 0 14px #00ff66;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #00ff66;
+    box-shadow: 0 0 14px #00ff66;
 }
 
+/* Card */
 .card {
-  position: relative;
-  margin-top: 28px;
-  padding: 34px 24px;
-  border: 1px solid rgba(0,150,255,.7);
-  border-radius: 28px;
-  background:
-    linear-gradient(
-      145deg,
-      rgba(8,20,40,.95),
-      rgba(0,5,15,.96)
-    );
-  box-shadow:
-    0 0 15px rgba(0,100,255,.35),
-    0 0 50px rgba(0,80,255,.18),
-    inset 0 0 30px rgba(0,110,255,.06);
+    position: relative;
+    margin-top: 28px;
+    padding: 34px 24px;
+    border: 1px solid rgba(0,150,255,.7);
+    border-radius: 28px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8,20,40,.95),
+            rgba(0,5,15,.96)
+        );
+    box-shadow:
+        0 0 15px rgba(0,100,255,.35),
+        0 0 50px rgba(0,80,255,.18),
+        inset 0 0 30px rgba(0,110,255,.06);
 }
 
 .card h2 {
-  text-align: center;
-  font-size: 31px;
-  margin-bottom: 12px;
-  text-shadow: 0 0 12px rgba(0,150,255,.8);
+    text-align: center;
+    font-size: 31px;
+    margin-bottom: 12px;
+    text-shadow: 0 0 12px rgba(0,150,255,.8);
 }
 
 .description {
-  text-align: center;
-  color: #9cb8d5;
-  line-height: 1.5;
-  font-size: 16px;
-  margin-bottom: 25px;
+    text-align: center;
+    color: #9cb8d5;
+    line-height: 1.5;
+    font-size: 16px;
+    margin-bottom: 25px;
 }
 
+/* Botão gerar */
 .generate-btn {
-  width: 100%;
-  border: 0;
-  border-radius: 18px;
-  padding: 21px 18px;
-  cursor: pointer;
-  color: white;
-  font-size: 20px;
-  font-weight: 900;
-  background: linear-gradient(90deg, #005eff, #008cff, #005eff);
-  box-shadow:
-    0 0 12px #0077ff,
-    0 0 35px rgba(0,100,255,.55);
-  transition: .2s;
+    width: 100%;
+    border: 0;
+    border-radius: 18px;
+    padding: 21px 18px;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    font-weight: 900;
+    background:
+        linear-gradient(90deg, #005eff, #008cff, #005eff);
+    box-shadow:
+        0 0 12px #0077ff,
+        0 0 35px rgba(0,100,255,.55);
+    transition: .2s;
 }
 
 .generate-btn:hover {
-  transform: translateY(-2px);
-  box-shadow:
-    0 0 20px #008cff,
-    0 0 50px rgba(0,100,255,.75);
+    transform: translateY(-2px);
+    box-shadow:
+        0 0 20px #008cff,
+        0 0 50px rgba(0,100,255,.75);
 }
 
 .generate-btn:active {
-  transform: scale(.98);
+    transform: scale(.98);
 }
 
+/* Resultado da key */
 .result {
-  display: none;
-  margin-top: 22px;
-  padding: 22px;
-  border: 1px solid rgba(0,150,255,.65);
-  border-radius: 20px;
-  background: rgba(0,10,25,.8);
+    display: none;
+    margin-top: 22px;
+    padding: 22px;
+    border: 1px solid rgba(0,150,255,.65);
+    border-radius: 20px;
+    background: rgba(0,10,25,.8);
 }
 
 .result.show {
-  display: block;
-  animation: appear .4s ease;
+    display: block;
+    animation: aparecer .4s ease;
 }
 
-@keyframes appear {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .result-title {
-  color: #20bfff;
-  font-weight: 900;
-  margin-bottom: 14px;
+    color: #20bfff;
+    font-weight: 900;
+    margin-bottom: 14px;
 }
 
 .key-box {
-  display: flex;
-  gap: 10px;
-  align-items: center;
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
 
 .key {
-  flex: 1;
-  min-width: 0;
-  padding: 17px 12px;
-  border-radius: 12px;
-  border: 1px solid #008cff;
-  background: #020a18;
-  color: #67cfff;
-  font-weight: 900;
-  font-size: 15px;
-  text-align: center;
-  word-break: break-all;
+    flex: 1;
+    min-width: 0;
+    padding: 17px 12px;
+    border-radius: 12px;
+    border: 1px solid #008cff;
+    background: #020a18;
+    color: #67cfff;
+    font-weight: 900;
+    font-size: 16px;
+    text-align: center;
+    word-break: break-all;
+    box-shadow: inset 0 0 15px rgba(0,110,255,.08);
 }
 
+/* Botão copiar */
 .copy-btn {
-  border: 1px solid #00aaff;
-  border-radius: 12px;
-  padding: 16px 14px;
-  cursor: pointer;
-  color: white;
-  font-weight: 900;
-  background: #06182c;
-  box-shadow: 0 0 12px rgba(0,150,255,.3);
+    border: 1px solid #00aaff;
+    border-radius: 12px;
+    padding: 16px 14px;
+    cursor: pointer;
+    color: white;
+    font-weight: 900;
+    background: #06182c;
+    box-shadow: 0 0 12px rgba(0,150,255,.3);
+    transition: .2s;
+}
+
+.copy-btn:hover {
+    background: #092641;
 }
 
 .copy-btn:active {
-  transform: scale(.95);
+    transform: scale(.95);
 }
 
+/* Redes sociais */
 .social-title {
-  text-align: center;
-  margin: 30px 0 15px;
-  font-size: 19px;
-  font-weight: 900;
-  color: #b9dcff;
-  letter-spacing: 2px;
+    text-align: center;
+    margin: 30px 0 15px;
+    font-size: 19px;
+    font-weight: 900;
+    color: #b9dcff;
+    letter-spacing: 2px;
 }
 
 .social {
-  display: flex;
-  flex-direction: column;
-  gap: 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
 }
 
 .social a {
-  text-decoration: none;
-  color: white;
-  font-weight: 900;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 17px;
-  border-radius: 16px;
-  transition: .2s;
+    text-decoration: none;
+    color: white;
+    font-weight: 900;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 17px;
+    border-radius: 16px;
+    transition: .2s;
 }
 
 .whatsapp {
-  background: linear-gradient(90deg, #008f3d, #00c95a);
-  box-shadow: 0 0 20px rgba(0,255,100,.25);
+    background: linear-gradient(90deg, #008f3d, #00c95a);
+    box-shadow: 0 0 20px rgba(0,255,100,.25);
 }
 
 .youtube {
-  background: linear-gradient(90deg, #a80000, #ff0000);
-  box-shadow: 0 0 20px rgba(255,0,0,.25);
+    background: linear-gradient(90deg, #a80000, #ff0000);
+    box-shadow: 0 0 20px rgba(255,0,0,.25);
 }
 
 .social a:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.15);
+    transform: translateY(-2px);
+    filter: brightness(1.15);
 }
 
 .footer {
-  text-align: center;
-  margin-top: 30px;
-  color: #7891ad;
-  font-size: 13px;
-  letter-spacing: 3px;
+    text-align: center;
+    margin-top: 30px;
+    color: #7891ad;
+    font-size: 13px;
+    letter-spacing: 3px;
 }
 
 .footer strong {
-  display: block;
-  margin-top: 7px;
-  color: #36aaff;
-  font-size: 16px;
+    display: block;
+    margin-top: 7px;
+    color: #36aaff;
+    font-size: 16px;
 }
 
+/* Celular */
 @media (max-width: 480px) {
-  .container {
-    padding-top: 10px;
-  }
 
-  .card {
-    padding: 27px 17px;
-  }
+    .container {
+        padding-top: 10px;
+    }
 
-  .subtitle {
-    font-size: 14px;
-    letter-spacing: 5px;
-  }
+    .card {
+        padding: 27px 17px;
+    }
 
-  .card h2 {
-    font-size: 26px;
-  }
+    .subtitle {
+        font-size: 14px;
+        letter-spacing: 5px;
+    }
 
-  .key-box {
-    flex-direction: column;
-  }
+    .card h2 {
+        font-size: 26px;
+    }
 
-  .key,
-  .copy-btn {
-    width: 100%;
-  }
+    .key-box {
+        flex-direction: column;
+    }
+
+    .key,
+    .copy-btn {
+        width: 100%;
+    }
 }
 </style>
 </head>
@@ -311,135 +334,188 @@ body::before {
 
 <div class="container">
 
-  <div class="logo">
-    TNT <span>APK</span> 2.0
-  </div>
+    <div class="logo-area">
 
-  <div class="subtitle">
-    GERADOR DE KEY
-  </div>
-
-  <div class="online">
-    <span class="online-dot"></span>
-    ONLINE
-  </div>
-
-  <div class="card">
-
-    <h2>🔑 GERE SUA KEY</h2>
-
-    <p class="description">
-      Gere sua key gratuitamente para acessar o
-      <strong>TNT APK 2.0</strong>.
-    </p>
-
-    <button class="generate-btn" onclick="gerarKey()">
-      🔑 &nbsp; GERAR UMA KEY
-    </button>
-
-    <div class="result" id="resultado">
-
-      <div class="result-title">
-        ✓ SUA KEY FOI GERADA:
-      </div>
-
-      <div class="key-box">
-
-        <div class="key" id="key">
-          TNT-APK-V9-GRATIS-SAFE
+        <div class="logo">
+            TNT <span>APK</span> 2.0
         </div>
 
-        <button class="copy-btn" onclick="copiarKey()">
-          📋 COPIAR
+        <div class="subtitle">
+            GERADOR DE KEY
+        </div>
+
+        <div class="online">
+            <span class="online-dot"></span>
+            ONLINE
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>🔑 GERE SUA KEY</h2>
+
+        <p class="description">
+            Gere sua key gratuitamente para acessar o
+            <strong>TNT APK 2.0</strong>.
+        </p>
+
+        <button
+            class="generate-btn"
+            onclick="gerarKey()"
+        >
+            🔑 &nbsp; GERAR UMA KEY
         </button>
 
-      </div>
+        <!-- A key começa escondida -->
+        <div
+            class="result"
+            id="resultado"
+        >
+
+            <div class="result-title">
+                ✓ SUA KEY FOI GERADA:
+            </div>
+
+            <div class="key-box">
+
+                <div
+                    class="key"
+                    id="key"
+                ></div>
+
+                <button
+                    class="copy-btn"
+                    id="copyButton"
+                    onclick="copiarKey()"
+                >
+                    📋 COPIAR
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="social-title">
+            NOSSAS REDES
+        </div>
+
+        <div class="social">
+
+            <a
+                class="whatsapp"
+                href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                💬 ENTRAR NO CANAL DO WHATSAPP
+                <span>›</span>
+            </a>
+
+            <a
+                class="youtube"
+                href="https://youtube.com/@tntapk2.0?si=n9vIQ3Nx5t93lImk"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                ▶ ENTRAR NO CANAL DO YOUTUBE
+                <span>›</span>
+            </a>
+
+        </div>
 
     </div>
 
-    <div class="social-title">
-      NOSSAS REDES
+    <div class="footer">
+        CRIADO POR
+        <strong>TNT APK 2.0</strong>
     </div>
-
-    <div class="social">
-
-      <a
-        class="whatsapp"
-        href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        💬 ENTRAR NO CANAL DO WHATSAPP ›
-      </a>
-
-      <a
-        class="youtube"
-        href="https://youtube.com/@tntapk2.0?si=n9vIQ3Nx5t93lImk"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        ▶ ENTRAR NO CANAL DO YOUTUBE ›
-      </a>
-
-    </div>
-
-  </div>
-
-  <div class="footer">
-    CRIADO POR
-    <strong>TNT APK 2.0</strong>
-  </div>
 
 </div>
 
 <script>
 
 function gerarKey() {
-  document.getElementById("key").textContent =
-    "TNT-APK-V9-GRATIS-SAFE";
 
-  document.getElementById("resultado")
-    .classList.add("show");
+    const novaKey = "TNT-STHCKV";
+
+    document.getElementById("key").textContent = novaKey;
+
+    document
+        .getElementById("resultado")
+        .classList.add("show");
 }
 
 function copiarKey() {
 
-  const key = document
-    .getElementById("key")
-    .textContent
-    .trim();
+    const key = document
+        .getElementById("key")
+        .textContent
+        .trim();
 
-  const botao = document.querySelector(".copy-btn");
+    const botao = document.getElementById("copyButton");
 
-  navigator.clipboard.writeText(key).then(function() {
+    if (!key) {
+        return;
+    }
 
-    botao.textContent = "✓ COPIADO!";
+    if (navigator.clipboard) {
 
-    setTimeout(function() {
-      botao.textContent = "📋 COPIAR";
-    }, 1800);
+        navigator.clipboard.writeText(key)
+            .then(function() {
 
-  }).catch(function() {
+                botao.textContent = "✓ COPIADO!";
+
+                setTimeout(function() {
+                    botao.textContent = "📋 COPIAR";
+                }, 1800);
+
+            })
+            .catch(function() {
+
+                copiarAlternativo(key, botao);
+
+            });
+
+    } else {
+
+        copiarAlternativo(key, botao);
+
+    }
+}
+
+function copiarAlternativo(key, botao) {
 
     const area = document.createElement("textarea");
 
     area.value = key;
+    area.style.position = "fixed";
+    area.style.opacity = "0";
+
     document.body.appendChild(area);
 
+    area.focus();
     area.select();
-    document.execCommand("copy");
 
-    area.remove();
+    try {
+        document.execCommand("copy");
 
-    botao.textContent = "✓ COPIADO!";
+        botao.textContent = "✓ COPIADO!";
 
-    setTimeout(function() {
-      botao.textContent = "📋 COPIAR";
-    }, 1800);
-  });
+        setTimeout(function() {
+            botao.textContent = "📋 COPIAR";
+        }, 1800);
+
+    } catch (erro) {
+
+        alert("Não foi possível copiar automaticamente.");
+
+    }
+
+    document.body.removeChild(area);
 }
 
 </script>
 
 </body>
-</html>
+  </html>
