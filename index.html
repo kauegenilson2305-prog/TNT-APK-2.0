@@ -6,7 +6,11 @@
 <title>TNT APK 2.0 - Gerador de Key</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
 
 body{
 min-height:100vh;
@@ -55,7 +59,9 @@ color:#fff;
 text-shadow:0 0 5px #008cff,0 0 20px rgba(0,100,255,.7);
 }
 
-.logo span{color:#008cff}
+.logo span{
+color:#008cff;
+}
 
 .subtitle{
 margin-top:12px;
@@ -76,7 +82,9 @@ border:1px solid #00ff88;
 border-radius:30px;
 color:#00ff88;
 font-weight:bold;
-box-shadow:0 0 10px rgba(0,255,120,.35),inset 0 0 12px rgba(0,255,120,.08);
+box-shadow:
+0 0 10px rgba(0,255,120,.35),
+inset 0 0 12px rgba(0,255,120,.08);
 }
 
 .online-dot{
@@ -93,7 +101,8 @@ margin-top:28px;
 padding:34px 24px;
 border:1px solid rgba(0,150,255,.7);
 border-radius:28px;
-background:linear-gradient(145deg,rgba(8,20,40,.95),rgba(0,5,15,.96));
+background:
+linear-gradient(145deg,rgba(8,20,40,.95),rgba(0,5,15,.96));
 box-shadow:
 0 0 15px rgba(0,100,255,.35),
 0 0 50px rgba(0,80,255,.18),
@@ -124,17 +133,24 @@ cursor:pointer;
 color:white;
 font-size:20px;
 font-weight:900;
-background:linear-gradient(90deg,#005eff,#008cff,#005eff);
-box-shadow:0 0 12px #0077ff,0 0 35px rgba(0,100,255,.55);
+background:
+linear-gradient(90deg,#005eff,#008cff,#005eff);
+box-shadow:
+0 0 12px #0077ff,
+0 0 35px rgba(0,100,255,.55);
 transition:.2s;
 }
 
 .generate-btn:hover{
 transform:translateY(-2px);
-box-shadow:0 0 20px #008cff,0 0 50px rgba(0,100,255,.75);
+box-shadow:
+0 0 20px #008cff,
+0 0 50px rgba(0,100,255,.75);
 }
 
-.generate-btn:active{transform:scale(.98)}
+.generate-btn:active{
+transform:scale(.98);
+}
 
 .result{
 display:none;
@@ -151,8 +167,14 @@ animation:appear .4s ease;
 }
 
 @keyframes appear{
-from{opacity:0;transform:translateY(10px)}
-to{opacity:1;transform:translateY(0)}
+from{
+opacity:0;
+transform:translateY(10px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 .result-title{
@@ -194,8 +216,13 @@ box-shadow:0 0 12px rgba(0,150,255,.3);
 transition:.2s;
 }
 
-.copy-btn:hover{background:#092641}
-.copy-btn:active{transform:scale(.95)}
+.copy-btn:hover{
+background:#092641;
+}
+
+.copy-btn:active{
+transform:scale(.95);
+}
 
 .social-title{
 text-align:center;
@@ -257,12 +284,33 @@ font-size:16px;
 }
 
 @media(max-width:480px){
-.container{padding-top:10px}
-.card{padding:27px 17px}
-.subtitle{font-size:14px;letter-spacing:5px}
-.card h2{font-size:26px}
-.key-box{flex-direction:column}
-.key,.copy-btn{width:100%}
+
+.container{
+padding-top:10px;
+}
+
+.card{
+padding:27px 17px;
+}
+
+.subtitle{
+font-size:14px;
+letter-spacing:5px;
+}
+
+.card h2{
+font-size:26px;
+}
+
+.key-box{
+flex-direction:column;
+}
+
+.key,
+.copy-btn{
+width:100%;
+}
+
 }
 </style>
 </head>
@@ -311,7 +359,11 @@ Gere sua key gratuitamente para acessar o
 
 <div class="key" id="key"></div>
 
-<button class="copy-btn" id="copyButton" onclick="copiarKey()">
+<button
+class="copy-btn"
+id="copyButton"
+onclick="copiarKey()"
+>
 📋 COPIAR
 </button>
 
@@ -360,7 +412,7 @@ CRIADO POR
 
 function gerarKey(){
 
-const novaKey="TNT-VQTSEN";
+const novaKey="TNT-STSL2P";
 
 document.getElementById("key").textContent=novaKey;
 
