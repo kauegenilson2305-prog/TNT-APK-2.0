@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TNT APK 2.0 - Gerador de Key</title>
+<meta name="theme-color" content="#020612">
+<title>TNT APK 2.0 - Registro Grátis</title>
 
 <style>
 * {
@@ -14,22 +16,21 @@
 
 body {
   min-height: 100vh;
+  padding: 25px 0;
   font-family: Arial, Helvetica, sans-serif;
   color: #fff;
   background:
-    radial-gradient(circle at 50% 20%, rgba(0,110,255,.25), transparent 35%),
-    radial-gradient(circle at 20% 80%, rgba(0,60,255,.18), transparent 30%),
-    linear-gradient(145deg, #020612, #00112c 45%, #00030a);
-  overflow-x: hidden;
-  padding: 25px 0;
+    radial-gradient(circle at 50% 15%, rgba(0,110,255,.25), transparent 38%),
+    linear-gradient(145deg, #020612, #00112c 50%, #00030a);
 }
 
 body::before {
   content: "";
   position: fixed;
   inset: 0;
+  z-index: 0;
   pointer-events: none;
-  opacity: .35;
+  opacity: .3;
   background-image:
     linear-gradient(rgba(0,120,255,.08) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0,120,255,.08) 1px, transparent 1px);
@@ -44,18 +45,12 @@ body::before {
   z-index: 1;
 }
 
-.logo-area {
-  margin-bottom: 20px;
-}
-
 .logo {
-  font-size: clamp(42px, 10vw, 78px);
+  font-size: clamp(42px, 10vw, 76px);
   font-weight: 1000;
   letter-spacing: -3px;
-  line-height: .95;
-  text-transform: uppercase;
-  color: #fff;
-  text-shadow: 0 0 5px #008cff, 0 0 20px rgba(0,100,255,.7);
+  line-height: 1;
+  text-shadow: 0 0 8px #008cff, 0 0 25px #005eff;
 }
 
 .logo span {
@@ -63,10 +58,10 @@ body::before {
 }
 
 .subtitle {
-  margin-top: 12px;
-  font-size: 20px;
-  font-weight: 800;
-  letter-spacing: 8px;
+  margin-top: 14px;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 5px;
   color: #dcecff;
   text-shadow: 0 0 12px #008cff;
 }
@@ -76,152 +71,141 @@ body::before {
   align-items: center;
   gap: 9px;
   margin-top: 18px;
-  padding: 8px 22px;
+  padding: 8px 20px;
   border: 1px solid #00ff88;
   border-radius: 30px;
   color: #00ff88;
   font-weight: bold;
-  box-shadow: 0 0 10px rgba(0,255,120,.35);
 }
 
 .online-dot {
-  width: 11px;
-  height: 11px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: #00ff66;
-  box-shadow: 0 0 14px #00ff66;
+  box-shadow: 0 0 12px #00ff66;
 }
 
 .card {
   margin-top: 28px;
-  padding: 34px 24px;
+  padding: 30px 23px;
   border: 1px solid rgba(0,150,255,.7);
-  border-radius: 28px;
-  background: linear-gradient(145deg, rgba(8,20,40,.95), rgba(0,5,15,.96));
-  box-shadow: 0 0 15px rgba(0,100,255,.35),
-              0 0 50px rgba(0,80,255,.18);
+  border-radius: 25px;
+  background: linear-gradient(145deg, rgba(8,20,40,.97), rgba(0,5,15,.98));
+  box-shadow: 0 0 20px rgba(0,100,255,.25),
+              inset 0 0 25px rgba(0,110,255,.05);
 }
 
-.card h2 {
-  font-size: 31px;
-  margin-bottom: 12px;
-  text-shadow: 0 0 12px rgba(0,150,255,.8);
+h2 {
+  font-size: 27px;
+  margin-bottom: 15px;
+  text-shadow: 0 0 12px #0077ff;
 }
 
 .description {
-  color: #9cb8d5;
-  line-height: 1.5;
+  color: #b3c9e0;
   font-size: 16px;
-  margin-bottom: 25px;
+  line-height: 1.6;
+  margin-bottom: 24px;
 }
 
-.generate-btn {
-  width: 100%;
-  border: 0;
-  border-radius: 18px;
-  padding: 21px 18px;
-  cursor: pointer;
-  color: white;
-  font-size: 20px;
-  font-weight: 900;
-  background: linear-gradient(90deg, #005eff, #008cff, #005eff);
-  box-shadow: 0 0 12px #0077ff, 0 0 35px rgba(0,100,255,.55);
-  transition: .2s;
-}
-
-.generate-btn:hover {
-  transform: translateY(-2px);
-}
-
-.result {
+.step {
   display: none;
   margin-top: 22px;
-  padding: 22px;
-  border: 1px solid rgba(0,150,255,.65);
-  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid rgba(0,150,255,.5);
+  border-radius: 18px;
   background: rgba(0,10,25,.8);
 }
 
-.result.show {
+.step.show {
   display: block;
-  animation: appear .4s ease;
+  animation: appear .3s ease;
 }
 
 @keyframes appear {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-.result-title {
-  color: #20bfff;
+.btn {
+  display: block;
+  width: 100%;
+  padding: 18px 14px;
+  border: 0;
+  border-radius: 14px;
+  color: #fff;
+  font-size: 16px;
   font-weight: 900;
-  margin-bottom: 14px;
-}
-
-.key-box {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.key {
-  flex: 1;
-  min-width: 0;
-  padding: 17px 12px;
-  border-radius: 12px;
-  border: 1px solid #008cff;
-  background: #020a18;
-  color: #67cfff;
-  font-weight: 900;
-  font-size: 18px;
-  text-align: center;
-  word-break: break-all;
-}
-
-.copy-btn {
-  border: 1px solid #00aaff;
-  border-radius: 12px;
-  padding: 16px 14px;
+  text-decoration: none;
   cursor: pointer;
-  color: white;
-  font-weight: 900;
-  background: #06182c;
   transition: .2s;
+  font-family: inherit;
 }
 
-.copy-btn:hover {
-  background: #092641;
+.btn:hover {
+  filter: brightness(1.15);
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: scale(.98);
+}
+
+.btn-blue {
+  background: linear-gradient(90deg, #005eff, #008cff);
+  box-shadow: 0 0 20px rgba(0,100,255,.35);
+}
+
+.btn-green {
+  background: linear-gradient(90deg, #008f3d, #00c95a);
+  box-shadow: 0 0 18px rgba(0,255,100,.2);
+}
+
+.step-title {
+  font-size: 19px;
+  font-weight: 900;
+  margin-bottom: 12px;
+  color: #67cfff;
+}
+
+.step-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #b3c9e0;
+  margin-bottom: 18px;
+}
+
+.notice {
+  margin-top: 15px;
+  color: #8fa9c4;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.status {
+  margin-top: 13px;
+  color: #ffc857;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 .social-title {
-  margin: 30px 0 15px;
-  font-size: 19px;
+  margin: 27px 0 14px;
+  font-size: 17px;
   font-weight: 900;
-  color: #b9dcff;
   letter-spacing: 2px;
+  color: #b9dcff;
 }
 
-.social {
-  display: flex;
-  flex-direction: column;
-  gap: 13px;
-}
-
-.social a {
+.social-link {
+  display: block;
+  margin-top: 12px;
+  padding: 15px;
+  border-radius: 14px;
   text-decoration: none;
   color: white;
-  font-weight: 900;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 17px;
-  border-radius: 16px;
-  transition: .2s;
-}
-
-.whatsapp {
+  font-weight: 800;
   background: linear-gradient(90deg, #008f3d, #00c95a);
 }
 
@@ -229,15 +213,10 @@ body::before {
   background: linear-gradient(90deg, #a80000, #ff0000);
 }
 
-.social a:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.15);
-}
-
 .footer {
-  margin-top: 30px;
+  margin-top: 28px;
   color: #7891ad;
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 3px;
 }
 
@@ -249,12 +228,9 @@ body::before {
 }
 
 @media (max-width: 480px) {
-  .container { padding-top: 10px; }
-  .card { padding: 27px 17px; }
-  .subtitle { font-size: 14px; letter-spacing: 5px; }
-  .card h2 { font-size: 26px; }
-  .key-box { flex-direction: column; }
-  .key, .copy-btn { width: 100%; }
+  .card { padding: 25px 16px; }
+  .subtitle { font-size: 14px; letter-spacing: 4px; }
+  h2 { font-size: 23px; }
 }
 </style>
 </head>
@@ -262,121 +238,135 @@ body::before {
 <body>
 <div class="container">
 
-  <div class="logo-area">
+  <header>
     <div class="logo">TNT <span>APK</span> 2.0</div>
-    <div class="subtitle">GERADOR DE KEY</div>
+    <div class="subtitle">REGISTRO GRÁTIS</div>
+
     <div class="online">
       <span class="online-dot"></span>
       ONLINE
     </div>
-  </div>
+  </header>
 
-  <div class="card">
-    <h2>🔑 GERE SUA KEY</h2>
+  <main class="card">
+    <h2>🚀 CRIE SUA CONTA</h2>
 
     <p class="description">
-      Gere sua key gratuitamente para acessar o
-      <strong>TNT APK 2.0</strong>.
+      Siga as etapas abaixo para continuar para o cadastro.
+      É grátis!
     </p>
 
-    <button class="generate-btn" onclick="gerarKey()">
-      🔑 &nbsp; GERAR UMA KEY
+    <button class="btn btn-blue" id="startButton" type="button">
+      📝 REGISTRAR CONTA GRÁTIS
     </button>
 
-    <div class="result" id="resultado">
-      <div class="result-title">✓ SUA KEY FOI GERADA:</div>
+    <section class="step" id="whatsappStep">
+      <div class="step-title">💬 ETAPA 1 — WHATSAPP</div>
 
-      <div class="key-box">
-        <div class="key" id="key"></div>
+      <p class="step-text">
+        Primeiro, acesse nosso canal do WhatsApp.
+        Depois, volte para esta página e toque em
+        “JÁ ACESSEI — CONTINUAR”.
+      </p>
 
-        <button class="copy-btn" id="copyButton" onclick="copiarKey()">
-          📋 COPIAR
-        </button>
-      </div>
-    </div>
-
-    <div class="social-title">NOSSAS REDES</div>
-
-    <div class="social">
       <a
-        class="whatsapp"
+        class="btn btn-green"
         href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x"
         target="_blank"
         rel="noopener noreferrer">
-        💬 ENTRAR NO CANAL DO WHATSAPP <span>›</span>
+        💚 ACESSAR CANAL DO WHATSAPP
       </a>
+
+      <button
+        class="btn btn-blue"
+        id="continueButton"
+        type="button"
+        style="margin-top:12px">
+        ✓ JÁ ACESSEI — CONTINUAR
+      </button>
+
+      <p class="notice">
+        Depois de visitar o canal, volte aqui para continuar.
+        O site não consegue confirmar automaticamente se você
+        entrou ou seguiu o canal.
+      </p>
+
+      <p class="status" id="status" aria-live="polite"></p>
+    </section>
+
+    <section class="step" id="registerStep">
+      <div class="step-title">✅ ETAPA 2 — REGISTRO</div>
+
+      <p class="step-text">
+        Você pode continuar para o cadastro pelo botão abaixo.
+      </p>
 
       <a
-        class="youtube"
-        href="https://youtube.com/@tntapk2.0?si=n9vIQ3Nx5t93lImk"
+        class="btn btn-blue"
+        href="https://alpharede.com/OSGLT1iLUYf"
         target="_blank"
         rel="noopener noreferrer">
-        ▶ ENTRAR NO CANAL DO YOUTUBE <span>›</span>
+        🚀 CONTINUAR PARA O REGISTRO
       </a>
-    </div>
-  </div>
+    </section>
 
-  <div class="footer">
+    <div class="social-title">NOSSAS REDES</div>
+
+    <a
+      class="social-link"
+      href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x"
+      target="_blank"
+      rel="noopener noreferrer">
+      💬 CANAL DO WHATSAPP
+    </a>
+
+    <a
+      class="social-link youtube"
+      href="https://youtube.com/@tntapk2.0?si=n9vIQ3Nx5t93lImk"
+      target="_blank"
+      rel="noopener noreferrer">
+      ▶ CANAL DO YOUTUBE
+    </a>
+  </main>
+
+  <footer class="footer">
     CRIADO POR
     <strong>TNT APK 2.0</strong>
-  </div>
+  </footer>
 
 </div>
 
 <script>
-function gerarKey() {
-  const novaKey = "M1NX";
+const startButton = document.getElementById("startButton");
+const continueButton = document.getElementById("continueButton");
+const whatsappStep = document.getElementById("whatsappStep");
+const registerStep = document.getElementById("registerStep");
+const statusText = document.getElementById("status");
 
-  document.getElementById("key").textContent = novaKey;
-  document.getElementById("resultado").classList.add("show");
-}
+startButton.addEventListener("click", function () {
+  whatsappStep.classList.add("show");
+  startButton.textContent = "✓ ETAPA 1 — ACESSE O WHATSAPP";
+  statusText.textContent =
+    "Acesse o canal e depois volte para esta página.";
+  whatsappStep.scrollIntoView({
+    behavior: "smooth",
+    block: "nearest"
+  });
+});
 
-async function copiarKey() {
-  const key = document.getElementById("key").textContent.trim();
-  const botao = document.getElementById("copyButton");
+continueButton.addEventListener("click", function () {
+  registerStep.classList.add("show");
+  statusText.textContent =
+    "Etapa concluída. O botão de registro está liberado.";
+  continueButton.textContent = "✓ ETAPA CONCLUÍDA";
 
-  if (!key) return;
-
-  try {
-    await navigator.clipboard.writeText(key);
-    mostrarCopiado(botao);
-  } catch (erro) {
-    copiarAlternativo(key, botao);
-  }
-}
-
-function mostrarCopiado(botao) {
-  botao.textContent = "✓ COPIADO!";
-
-  setTimeout(function() {
-    botao.textContent = "📋 COPIAR";
-  }, 1800);
-}
-
-function copiarAlternativo(key, botao) {
-  const area = document.createElement("textarea");
-  area.value = key;
-  area.style.position = "fixed";
-  area.style.opacity = "0";
-
-  document.body.appendChild(area);
-  area.focus();
-  area.select();
-
-  try {
-    const sucesso = document.execCommand("copy");
-
-    if (sucesso) {
-      mostrarCopiado(botao);
-    } else {
-      alert("Não foi possível copiar automaticamente. Copie a key manualmente.");
-    }
-  } catch (erro) {
-    alert("Não foi possível copiar automaticamente. Copie a key manualmente.");
-  }
-
-  document.body.removeChild(area);
-}
+  registerStep.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+});
 </script>
+
 </body>
   </html>
+  
