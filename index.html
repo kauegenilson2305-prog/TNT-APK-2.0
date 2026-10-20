@@ -1,377 +1,160 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#050816">
-  <title>DESBANIMENTO PEPEU</title>
+  <title>TNT WIRE - Gerador de Key</title>
 
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     body {
       min-height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
-      padding: 90px 20px 25px;
-      font-family: Arial, Helvetica, sans-serif;
-      color: #fff;
-      background: #050816;
-      overflow-x: hidden;
-    }
-
-    .background {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
+      align-items: center;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      color: #ffffff;
       background:
-        radial-gradient(ellipse at 50% 0%, #12356b 0%, transparent 60%),
-        linear-gradient(145deg, #030611, #07142c, #02040c);
+        radial-gradient(circle at top, #123d75 0%, transparent 45%),
+        #050914;
     }
 
-    .glow {
-      position: fixed;
-      width: 300px;
-      height: 300px;
-      top: 15%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #007bff;
-      filter: blur(150px);
-      opacity: .2;
-      border-radius: 50%;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    .top-title {
-      position: absolute;
-      top: 18px;
-      left: 0;
+    .container {
       width: 100%;
-      padding: 12px 10px;
+      max-width: 390px;
+      padding: 30px 22px;
       text-align: center;
-      color: #00c8ff;
-      font-size: clamp(20px, 5vw, 29px);
-      font-weight: 900;
-      letter-spacing: 2px;
-      text-shadow: 0 0 10px #008cff, 0 0 22px #005dff;
-      z-index: 10;
-    }
-
-    .card {
-      width: 100%;
-      max-width: 420px;
-      padding: 34px 24px;
-      text-align: center;
-      background: rgba(8, 17, 39, .94);
-      border: 1px solid rgba(0, 174, 255, .65);
-      border-radius: 22px;
-      box-shadow: 0 0 35px rgba(0, 140, 255, .2);
-      backdrop-filter: blur(12px);
+      background: rgba(9, 20, 42, 0.96);
+      border: 1px solid #1677ff;
+      border-radius: 18px;
+      box-shadow: 0 0 28px rgba(0, 119, 255, 0.24);
     }
 
     .logo {
-      margin-bottom: 32px;
-      font-size: 30px;
-      font-weight: 900;
-      letter-spacing: 2px;
-      text-shadow: 0 0 20px #008cff;
-    }
-
-    .logo span {
-      color: #00baff;
+      width: 72px;
+      height: 72px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 18px;
+      border: 2px solid #1685ff;
+      border-radius: 50%;
+      color: #58b4ff;
+      font-size: 25px;
+      font-weight: bold;
+      box-shadow: 0 0 20px rgba(0, 119, 255, 0.3);
     }
 
     h1 {
-      margin-bottom: 12px;
-      font-size: 23px;
-      line-height: 1.4;
+      margin-bottom: 10px;
+      font-size: 25px;
+      letter-spacing: 2px;
     }
 
-    .description {
-      margin-bottom: 24px;
-      color: #b9c9e7;
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    .button {
-      display: flex;
-      width: 100%;
-      min-height: 52px;
-      align-items: center;
-      justify-content: center;
-      padding: 14px;
-      border: none;
-      border-radius: 11px;
-      background: linear-gradient(100deg, #006dff, #00bfff);
-      box-shadow: 0 0 20px rgba(0, 145, 255, .25);
-      color: #fff;
-      font-size: 14px;
-      font-weight: 900;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform .2s, filter .2s;
-    }
-
-    .button:hover {
-      filter: brightness(1.15);
-      transform: translateY(-2px);
-    }
-
-    .button:disabled {
-      opacity: .65;
-      cursor: wait;
-      transform: none;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    .spinner {
-      width: 82px;
-      height: 82px;
-      margin: 26px auto;
-      border: 6px solid rgba(0, 183, 255, .15);
-      border-top-color: #00c8ff;
-      border-right-color: #087bff;
-      border-radius: 50%;
-      animation: spin .8s linear infinite;
-      box-shadow: 0 0 20px rgba(0, 145, 255, .15);
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    .status {
-      margin: 14px 0;
-      color: #b9c9e7;
+    .subtitle {
+      margin-bottom: 25px;
+      color: #a8b9d3;
       font-size: 14px;
       line-height: 1.6;
     }
 
-    .countdown {
-      margin: 18px 0;
-      color: #00c8ff;
-      font-size: 29px;
-      font-weight: 900;
-    }
-
-    .progress-track {
+    button {
       width: 100%;
-      height: 7px;
-      margin: 18px 0;
-      overflow: hidden;
-      background: #182744;
-      border-radius: 20px;
+      padding: 15px;
+      border: none;
+      border-radius: 9px;
+      color: #ffffff;
+      background: linear-gradient(90deg, #0865e9, #159dff);
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
     }
 
-    .progress {
-      width: 0%;
-      height: 100%;
-      background: linear-gradient(90deg, #007bff, #00eaff);
-      transition: width 1s linear;
+    button:hover {
+      filter: brightness(1.15);
+      transform: translateY(-1px);
     }
 
-    .success-icon {
-      display: flex;
-      width: 78px;
-      height: 78px;
-      align-items: center;
-      justify-content: center;
-      margin: 24px auto;
-      border: 2px solid #00e6a0;
-      border-radius: 50%;
-      color: #00e6a0;
-      font-size: 42px;
-      box-shadow: 0 0 24px rgba(0, 230, 160, .15);
+    #resultado {
+      display: none;
+      margin-top: 22px;
+      padding: 18px 12px;
+      border: 1px solid #1677ff;
+      border-radius: 10px;
+      background: #07152b;
     }
 
-    .success-title {
-      margin-bottom: 14px;
-      color: #00e6a0;
+    .key-label {
+      margin-bottom: 12px;
+      color: #8ebfff;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    #key {
+      margin-bottom: 16px;
+      color: #55c2ff;
       font-size: 21px;
+      font-weight: bold;
+      overflow-wrap: anywhere;
     }
 
-    @media (max-width: 380px) {
-      .card { padding: 28px 18px; }
-      .logo { font-size: 26px; }
+    .copy-button {
+      padding: 12px;
+      background: #102d50;
+      border: 1px solid #268bff;
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      .spinner { animation-duration: 2s; }
-      .button { transition: none; }
+    .footer {
+      margin-top: 23px;
+      color: #6f85a5;
+      font-size: 11px;
     }
   </style>
 </head>
 
 <body>
-  <div class="background"></div>
-  <div class="glow"></div>
+  <main class="container">
+    <div class="logo">TNT</div>
 
-  <!-- TÍTULO NO TOPO -->
-  <div class="top-title">
-    DESBANIMENTO PEPEU
-  </div>
+    <h1>TNT WIRE</h1>
+    <p class="subtitle">
+      GERADOR DE KEY<br>
+      Clique no botão abaixo para obter sua key.
+    </p>
 
-  <main class="card">
-    <div class="logo">TNT <span>APK 2.0</span></div>
+    <button onclick="gerarKey()">GERAR KEY</button>
 
-    <!-- TELA INICIAL -->
-    <section id="locked">
-      <h1>🔒 ACESSO BLOQUEADO</h1>
-      <p class="description">
-        Entre no canal para liberar o download.
-      </p>
-
-      <button class="button" id="subscribeButton">
-        ENTRAR NO CANAL
+    <section id="resultado">
+      <p class="key-label">SUA KEY</p>
+      <div id="key">TNT-WIRE-4628</div>
+      <button class="copy-button" onclick="copiarKey()">
+        COPIAR KEY
       </button>
     </section>
 
-    <!-- VERIFICAÇÃO DE 15 SEGUNDOS -->
-    <section id="checking" class="hidden" aria-live="polite">
-      <h1>AGUARDE A VERIFICAÇÃO</h1>
-      <div class="spinner"></div>
-
-      <p class="status">
-        Aguarde enquanto preparamos o acesso ao download...
-      </p>
-
-      <div class="countdown" id="countdown">15s</div>
-
-      <div class="progress-track">
-        <div class="progress" id="progress"></div>
-      </div>
-    </section>
-
-    <!-- DOWNLOAD LIBERADO -->
-    <section id="unlocked" class="hidden" aria-live="polite">
-      <div class="success-icon">✓</div>
-
-      <h1 class="success-title">
-        VERIFICAÇÃO CONCLUÍDA
-      </h1>
-
-      <p class="description">
-        A etapa de espera terminou. O download está disponível.
-      </p>
-
-      <a
-        class="button"
-        id="downloadButton"
-        href="https://alpharede.com/FG2YcBw09dh"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        LIBERAR O DOWNLOAD
-      </a>
-    </section>
+    <p class="footer">TNT WIRE © 2026</p>
   </main>
 
   <script>
-    const WHATSAPP_URL =
-      "https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x";
+    const KEY_FIXA = "TNT-WIRE-4628";
 
-    const locked = document.getElementById("locked");
-    const checking = document.getElementById("checking");
-    const unlocked = document.getElementById("unlocked");
+    function gerarKey() {
+      document.getElementById("key").textContent = KEY_FIXA;
+      document.getElementById("resultado").style.display = "block";
+    }
 
-    const subscribeButton =
-      document.getElementById("subscribeButton");
-
-    const countdown = document.getElementById("countdown");
-    const progress = document.getElementById("progress");
-
-    let started = false;
-    let waitingForReturn = false;
-
-    subscribeButton.addEventListener("click", function () {
-      if (started || waitingForReturn) return;
-
-      waitingForReturn = true;
-
-      // Abre o canal do WhatsApp em outra aba.
-      const channelTab = window.open(
-        WHATSAPP_URL,
-        "_blank"
-      );
-
-      // Se o navegador bloquear a nova aba, abre o canal
-      // na aba atual.
-      if (!channelTab) {
-        waitingForReturn = false;
-        window.location.href = WHATSAPP_URL;
-        return;
-      }
-
-      subscribeButton.textContent = "CANAL ABERTO";
-      subscribeButton.disabled = true;
-
-      function returnedToPage() {
-        if (document.visibilityState !== "visible") return;
-        if (started) return;
-
-        document.removeEventListener(
-          "visibilitychange",
-          returnedToPage
-        );
-
-        window.removeEventListener(
-          "focus",
-          returnedToPage
-        );
-
-        waitingForReturn = false;
-        startVerification();
-      }
-
-      document.addEventListener(
-        "visibilitychange",
-        returnedToPage
-      );
-
-      window.addEventListener(
-        "focus",
-        returnedToPage
-      );
-    });
-
-    function startVerification() {
-      if (started) return;
-      started = true;
-
-      locked.classList.add("hidden");
-      checking.classList.remove("hidden");
-
-      let seconds = 15;
-
-      countdown.textContent = seconds + "s";
-      progress.style.width = "0%";
-
-      const timer = setInterval(function () {
-        seconds--;
-
-        countdown.textContent = seconds + "s";
-
-        progress.style.width =
-          ((15 - seconds) / 15 * 100) + "%";
-
-        if (seconds <= 0) {
-          clearInterval(timer);
-          checking.classList.add("hidden");
-          unlocked.classList.remove("hidden");
-        }
-      }, 1000);
+    function copiarKey() {
+      navigator.clipboard.writeText(KEY_FIXA)
+        .then(() => alert("Key copiada com sucesso!"))
+        .catch(() => alert("Sua key é: " + KEY_FIXA));
     }
   </script>
 </body>
