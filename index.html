@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050914">
   <title>TNT WIRE - Gerador de Key</title>
 
   <style>
@@ -18,10 +19,10 @@
       justify-content: center;
       align-items: center;
       padding: 20px;
-      font-family: Arial, sans-serif;
-      color: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #fff;
       background:
-        radial-gradient(circle at top, #123d75 0%, transparent 45%),
+        radial-gradient(circle at top, #123d75 0%, transparent 48%),
         #050914;
     }
 
@@ -30,15 +31,15 @@
       max-width: 390px;
       padding: 30px 22px;
       text-align: center;
-      background: rgba(9, 20, 42, 0.96);
+      background: rgba(9, 20, 42, 0.97);
       border: 1px solid #1677ff;
       border-radius: 18px;
       box-shadow: 0 0 28px rgba(0, 119, 255, 0.24);
     }
 
     .logo {
-      width: 72px;
-      height: 72px;
+      width: 76px;
+      height: 76px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -69,7 +70,7 @@
       padding: 15px;
       border: none;
       border-radius: 9px;
-      color: #ffffff;
+      color: #fff;
       background: linear-gradient(90deg, #0865e9, #159dff);
       font-size: 15px;
       font-weight: bold;
@@ -125,17 +126,26 @@
     <div class="logo">TNT</div>
 
     <h1>TNT WIRE</h1>
+
     <p class="subtitle">
       GERADOR DE KEY<br>
-      Clique no botão abaixo para obter sua key.
+      Clique no botão abaixo para gerar sua key.
     </p>
 
-    <button onclick="gerarKey()">GERAR KEY</button>
+    <button type="button" onclick="gerarKey()">
+      GERAR KEY
+    </button>
 
-    <section id="resultado">
+    <section id="resultado" aria-live="polite">
       <p class="key-label">SUA KEY</p>
-      <div id="key">TNT-WIRE-4628</div>
-      <button class="copy-button" onclick="copiarKey()">
+
+      <div id="key">TNT-YT-V25-8272</div>
+
+      <button
+        type="button"
+        class="copy-button"
+        onclick="copiarKey()"
+      >
         COPIAR KEY
       </button>
     </section>
@@ -144,17 +154,20 @@
   </main>
 
   <script>
-    const KEY_FIXA = "TNT-WIRE-4628";
+    const KEY_FIXA = "TNT-YT-V25-8272";
 
     function gerarKey() {
       document.getElementById("key").textContent = KEY_FIXA;
       document.getElementById("resultado").style.display = "block";
     }
 
-    function copiarKey() {
-      navigator.clipboard.writeText(KEY_FIXA)
-        .then(() => alert("Key copiada com sucesso!"))
-        .catch(() => alert("Sua key é: " + KEY_FIXA));
+    async function copiarKey() {
+      try {
+        await navigator.clipboard.writeText(KEY_FIXA);
+        alert("Key copiada com sucesso!");
+      } catch (erro) {
+        alert("Sua key é: " + KEY_FIXA);
+      }
     }
   </script>
 </body>
