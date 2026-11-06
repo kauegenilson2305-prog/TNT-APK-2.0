@@ -2,120 +2,128 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TNT APK - Painel Online</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08051a">
+  <title>TNT APK • Painel Online</title>
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-body {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #061b45, #0756b9, #03112e);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    padding: 20px;
-}
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background:
+        radial-gradient(circle at top, #123d78, transparent 55%),
+        linear-gradient(135deg, #050817, #08051a, #101c45);
+      color: white;
+    }
 
-.container {
-    width: 100%;
-    max-width: 380px;
-    background: rgba(5, 25, 65, 0.92);
-    border: 1px solid #168aff;
-    border-radius: 20px;
-    padding: 30px 22px;
-    text-align: center;
-    box-shadow: 0 0 30px rgba(0, 130, 255, 0.3);
-}
+    .painel {
+      width: 100%;
+      max-width: 400px;
+      padding: 35px 25px;
+      text-align: center;
+      border: 1px solid rgba(25, 200, 255, 0.5);
+      border-radius: 20px;
+      background: rgba(5, 12, 35, 0.92);
+      box-shadow: 0 0 30px rgba(25, 200, 255, 0.2);
+    }
 
-h1 {
-    font-size: 30px;
-    color: #40a9ff;
-    margin-bottom: 8px;
-}
+    .online {
+      display: inline-block;
+      padding: 7px 15px;
+      margin-bottom: 20px;
+      border-radius: 30px;
+      background: rgba(0, 255, 120, 0.12);
+      color: #00ff88;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
 
-.online {
-    color: #36e69a;
-    font-size: 13px;
-    margin-bottom: 30px;
-}
+    h1 {
+      font-size: 35px;
+      color: #19c8ff;
+      margin-bottom: 15px;
+      text-shadow: 0 0 15px rgba(25, 200, 255, 0.5);
+    }
 
-h2 {
-    font-size: 21px;
-    margin-bottom: 12px;
-}
+    .descricao {
+      color: #d2d8ed;
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
 
-.description {
-    color: #c4d9f5;
-    font-size: 14px;
-    line-height: 1.6;
-    margin: 15px 0 25px;
-}
+    button {
+      width: 100%;
+      padding: 17px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(90deg, #087bff, #19c8ff);
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(25, 200, 255, 0.35);
+      transition: 0.2s;
+    }
 
-button {
-    width: 100%;
-    padding: 16px;
-    border: none;
-    border-radius: 12px;
-    background: linear-gradient(90deg, #0878ff, #00b7ff);
-    color: white;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 0 18px rgba(0, 145, 255, 0.4);
-    transition: 0.3s;
-}
+    button:hover {
+      transform: scale(1.03);
+      filter: brightness(1.15);
+    }
 
-button:hover {
-    transform: scale(1.04);
-    box-shadow: 0 0 25px #008cff;
-}
+    button:active {
+      transform: scale(0.98);
+    }
 
-.footer {
-    color: #7899c4;
-    font-size: 11px;
-    margin-top: 28px;
-}
-</style>
+    .rodape {
+      margin-top: 25px;
+      color: #7885a8;
+      font-size: 11px;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="container">
+  <main class="painel">
+
+    <div class="online">● PAINEL ONLINE</div>
 
     <h1>TNT APK</h1>
-    <p class="online">● PAINEL ONLINE</p>
 
-    <h2>GERADOR DE KEY</h2>
-
-    <p class="description">
-        Passe pelo encurtador para poder gerar sua Key
-        totalmente gratuita para poder acessar a proxy.
+    <p class="descricao">
+      Passe pelo encurtador para poder gerar sua key
+      totalmente gratuita e acessar a proxy.
     </p>
 
     <button onclick="gerarKey()">
-        🔑 GERAR KEY
+      GERAR KEY
     </button>
 
-    <p class="footer">
-        © 2026 TNT APK - Todos os direitos reservados
-    </p>
+    <div class="rodape">
+      TNT APK • PAINEL ONLINE
+    </div>
 
-</div>
+  </main>
 
-<script>
-function gerarKey() {
-    window.location.href =
-    "https://alpharede.com/ebFbyHzXge3";
-}
-</script>
+  <script>
+    function gerarKey() {
+      window.location.href =
+        "https://alpharede.com/McI7FizXaTA";
+    }
+  </script>
 
 </body>
 </html>
