@@ -2,128 +2,357 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#08051a">
-  <title>TNT APK • Painel Online</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071b19">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+<title>TNT APK • Painel de Natal</title>
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      background:
-        radial-gradient(circle at top, #123d78, transparent 55%),
-        linear-gradient(135deg, #050817, #08051a, #101c45);
-      color: white;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    .painel {
-      width: 100%;
-      max-width: 400px;
-      padding: 35px 25px;
-      text-align: center;
-      border: 1px solid rgba(25, 200, 255, 0.5);
-      border-radius: 20px;
-      background: rgba(5, 12, 35, 0.92);
-      box-shadow: 0 0 30px rgba(25, 200, 255, 0.2);
-    }
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: white;
+  background:
+    radial-gradient(ellipse at top, #174b3b 0%, transparent 55%),
+    linear-gradient(145deg, #061b18, #092b25 55%, #071513);
+}
 
-    .online {
-      display: inline-block;
-      padding: 7px 15px;
-      margin-bottom: 20px;
-      border-radius: 30px;
-      background: rgba(0, 255, 120, 0.12);
-      color: #00ff88;
-      font-size: 12px;
-      font-weight: bold;
-      letter-spacing: 2px;
-    }
+/* NEVE ANIMADA */
+#snow {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
 
-    h1 {
-      font-size: 35px;
-      color: #19c8ff;
-      margin-bottom: 15px;
-      text-shadow: 0 0 15px rgba(25, 200, 255, 0.5);
-    }
+/* LUZES DE NATAL */
+.luzes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 5px;
+  z-index: 6;
+  pointer-events: none;
+}
 
-    .descricao {
-      color: #d2d8ed;
-      font-size: 14px;
-      line-height: 1.7;
-      margin-bottom: 28px;
-    }
+.luzes span {
+  width: 9px;
+  height: 15px;
+  border-radius: 50%;
+  background: #ff3535;
+  box-shadow: 0 0 12px currentColor;
+  animation: piscar 1.5s infinite alternate;
+}
 
-    button {
-      width: 100%;
-      padding: 17px;
-      border: none;
-      border-radius: 12px;
-      background: linear-gradient(90deg, #087bff, #19c8ff);
-      color: white;
-      font-size: 17px;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 0 20px rgba(25, 200, 255, 0.35);
-      transition: 0.2s;
-    }
+.luzes span:nth-child(2n) {
+  background: #ffe56b;
+  animation-delay: .5s;
+}
 
-    button:hover {
-      transform: scale(1.03);
-      filter: brightness(1.15);
-    }
+.luzes span:nth-child(3n) {
+  background: #39ff9c;
+  animation-delay: .9s;
+}
 
-    button:active {
-      transform: scale(0.98);
-    }
+@keyframes piscar {
+  from { opacity: .45; }
+  to { opacity: 1; }
+}
 
-    .rodape {
-      margin-top: 25px;
-      color: #7885a8;
-      font-size: 11px;
-    }
-  </style>
+/* PAINEL */
+.container {
+  width: 100%;
+  max-width: 410px;
+  position: relative;
+  z-index: 10;
+  padding: 3px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #e9c66d, #c92e37, #2bd18c);
+  box-shadow:
+    0 0 35px rgba(20, 255, 153, .15),
+    0 15px 55px rgba(0, 0, 0, .5);
+}
+
+.painel {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 32px 25px;
+  border-radius: 23px;
+  background:
+    radial-gradient(circle at top, rgba(34, 125, 78, .3), transparent 55%),
+    linear-gradient(160deg, #102c24, #071713);
+}
+
+.painel::before {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(255, 45, 55, .09);
+  filter: blur(45px);
+  top: -80px;
+  right: -60px;
+}
+
+/* CABEÇALHO */
+.etiqueta {
+  display: inline-block;
+  padding: 8px 15px;
+  border: 1px solid rgba(255, 220, 130, .4);
+  border-radius: 30px;
+  color: #ffe8a0;
+  background: rgba(255, 255, 255, .06);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.papai-noel {
+  font-size: 65px;
+  margin: 20px 0 5px;
+  display: block;
+  filter: drop-shadow(0 0 15px rgba(255,255,255,.2));
+  animation: balancar 3s ease-in-out infinite;
+}
+
+@keyframes balancar {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-8px) rotate(3deg); }
+}
+
+h1 {
+  margin-top: 5px;
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #fff0bd;
+  text-shadow: 0 3px 15px rgba(255, 193, 74, .35);
+}
+
+.subtitulo {
+  margin-top: 7px;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #45e5a0;
+  font-weight: bold;
+}
+
+/* DIVISÓRIA */
+.divisoria {
+  height: 1px;
+  margin: 24px 0;
+  background: linear-gradient(90deg, transparent, #e8c36a, transparent);
+}
+
+/* DESCRIÇÃO */
+.descricao {
+  color: #d6e9df;
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.destaque {
+  color: #ffe39a;
+  font-weight: bold;
+}
+
+/* BOTÃO */
+.botao {
+  position: relative;
+  width: 100%;
+  padding: 17px 12px;
+  border: 1px solid #ffdc89;
+  border-radius: 13px;
+  color: white;
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  cursor: pointer;
+  background: linear-gradient(110deg, #a81729, #e22e3c, #a81729);
+  background-size: 200% 100%;
+  box-shadow: 0 5px 22px rgba(220, 36, 52, .3);
+  transition: .25s;
+  animation: brilho 3s linear infinite;
+}
+
+@keyframes brilho {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.botao:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(255, 50, 65, .45);
+}
+
+.botao:active {
+  transform: scale(.97);
+}
+
+/* RODAPÉ */
+.rodape {
+  margin-top: 25px;
+  color: #91aa9d;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.rodape strong {
+  color: #e8c36a;
+}
+
+.decoracao {
+  margin-top: 15px;
+  font-size: 19px;
+  letter-spacing: 7px;
+}
+
+@media (max-width: 380px) {
+  .painel { padding: 27px 18px; }
+  h1 { font-size: 31px; }
+}
+</style>
 </head>
 
 <body>
 
-  <main class="painel">
+<canvas id="snow"></canvas>
 
-    <div class="online">● PAINEL ONLINE</div>
+<div class="luzes">
+  <span></span><span></span><span></span>
+  <span></span><span></span><span></span>
+  <span></span><span></span><span></span>
+  <span></span><span></span><span></span>
+</div>
+
+<main class="container">
+  <section class="painel">
+
+    <div class="etiqueta">
+      ❄ PAINEL ONLINE ❄
+    </div>
+
+    <span class="papai-noel">🎅</span>
 
     <h1>TNT APK</h1>
 
+    <div class="subtitulo">
+      EDIÇÃO ESPECIAL DE NATAL
+    </div>
+
+    <div class="divisoria"></div>
+
     <p class="descricao">
-      Passe pelo encurtador para poder gerar sua key
-      totalmente gratuita e acessar a proxy.
+      Bem-vindo ao painel oficial do
+      <span class="destaque">TNT APK!</span>
+      <br><br>
+      Passe pelo encurtador para liberar sua
+      <span class="destaque">KEY totalmente gratuita</span>
+      e acessar a proxy.
     </p>
 
-    <button onclick="gerarKey()">
-      GERAR KEY
+    <button class="botao" onclick="gerarKey()">
+      🎁 GERAR KEY AGORA
     </button>
 
     <div class="rodape">
-      TNT APK • PAINEL ONLINE
+      Que seu Natal seja cheio de alegria!<br>
+      <strong>TNT APK © 2026</strong>
     </div>
 
-  </main>
+    <div class="decoracao">
+      🎄 ❄️ 🎁 ❄️ 🎄
+    </div>
 
-  <script>
-    function gerarKey() {
-      window.location.href =
-        "https://alpharede.com/McI7FizXaTA";
+  </section>
+</main>
+
+<script>
+/* REDIRECIONAMENTO */
+function gerarKey() {
+  window.location.href =
+    "https://alpharede.com/McI7FizXaTA";
+}
+
+/* ANIMAÇÃO DE NEVE */
+const canvas = document.getElementById("snow");
+const ctx = canvas.getContext("2d");
+
+let flocos = [];
+
+function ajustarTela() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  flocos = [];
+
+  const quantidade = Math.min(
+    150,
+    Math.floor(window.innerWidth / 4)
+  );
+
+  for (let i = 0; i < quantidade; i++) {
+    flocos.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      raio: Math.random() * 3 + 1,
+      velocidade: Math.random() * 1.5 + .5,
+      vento: Math.random() * .8 - .4,
+      opacidade: Math.random() * .6 + .3
+    });
+  }
+}
+
+function animarNeve() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  flocos.forEach(f => {
+    ctx.beginPath();
+    ctx.arc(f.x, f.y, f.raio, 0, Math.PI * 2);
+
+    ctx.fillStyle = `rgba(255,255,255,${f.opacidade})`;
+    ctx.fill();
+
+    f.y += f.velocidade;
+    f.x += f.vento;
+
+    if (f.y > canvas.height + 5) {
+      f.y = -5;
+      f.x = Math.random() * canvas.width;
     }
-  </script>
+
+    if (f.x > canvas.width + 5) f.x = -5;
+    if (f.x < -5) f.x = canvas.width + 5;
+  });
+
+  requestAnimationFrame(animarNeve);
+}
+
+window.addEventListener("resize", ajustarTela);
+
+ajustarTela();
+animarNeve();
+</script>
 
 </body>
 </html>
