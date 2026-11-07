@@ -4,354 +4,276 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#071b19">
-
-<title>TNT APK • Painel de Natal</title>
+<meta name="theme-color" content="#080000">
+<title>FFH4X Prime | Painel Online</title>
 
 <style>
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  min-height: 100vh;
-  overflow-x: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  color: white;
-  background:
-    radial-gradient(ellipse at top, #174b3b 0%, transparent 55%),
-    linear-gradient(145deg, #061b18, #092b25 55%, #071513);
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: white;
+    background:
+        linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.85)),
+        url("banner.png") center center / cover fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    animation: energiaFundo 5s infinite alternate;
 }
 
-/* NEVE ANIMADA */
-#snow {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 5;
+@keyframes energiaFundo {
+    from { background-color: #080000; }
+    to { background-color: #350000; }
 }
 
-/* LUZES DE NATAL */
-.luzes {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  padding: 12px 5px;
-  z-index: 6;
-  pointer-events: none;
+/* Canvas de animação */
+#efeitoFundo {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
 }
 
-.luzes span {
-  width: 9px;
-  height: 15px;
-  border-radius: 50%;
-  background: #ff3535;
-  box-shadow: 0 0 12px currentColor;
-  animation: piscar 1.5s infinite alternate;
+/* Brilho vermelho no fundo */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(
+        circle at center,
+        transparent 10%,
+        rgba(0,0,0,.65) 100%
+    );
+    pointer-events: none;
+    z-index: 0;
 }
 
-.luzes span:nth-child(2n) {
-  background: #ffe56b;
-  animation-delay: .5s;
-}
-
-.luzes span:nth-child(3n) {
-  background: #39ff9c;
-  animation-delay: .9s;
-}
-
-@keyframes piscar {
-  from { opacity: .45; }
-  to { opacity: 1; }
-}
-
-/* PAINEL */
 .container {
-  width: 100%;
-  max-width: 410px;
-  position: relative;
-  z-index: 10;
-  padding: 3px;
-  border-radius: 25px;
-  background: linear-gradient(135deg, #e9c66d, #c92e37, #2bd18c);
-  box-shadow:
-    0 0 35px rgba(20, 255, 153, .15),
-    0 15px 55px rgba(0, 0, 0, .5);
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 390px;
+    padding: 28px 23px;
+    text-align: center;
+    background: rgba(10, 0, 0, .88);
+    border: 2px solid #ff1717;
+    border-radius: 18px;
+    box-shadow:
+        0 0 15px #ff0000,
+        0 0 35px rgba(255,0,0,.55),
+        inset 0 0 20px rgba(255,0,0,.12);
+    animation: entrada 1s ease, pulsar 3s infinite alternate;
 }
 
-.painel {
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-  padding: 32px 25px;
-  border-radius: 23px;
-  background:
-    radial-gradient(circle at top, rgba(34, 125, 78, .3), transparent 55%),
-    linear-gradient(160deg, #102c24, #071713);
+@keyframes entrada {
+    from { opacity: 0; transform: scale(.85); }
+    to { opacity: 1; transform: scale(1); }
 }
 
-.painel::before {
-  content: "";
-  position: absolute;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background: rgba(255, 45, 55, .09);
-  filter: blur(45px);
-  top: -80px;
-  right: -60px;
+@keyframes pulsar {
+    from {
+        box-shadow: 0 0 12px red, 0 0 25px rgba(255,0,0,.3);
+    }
+    to {
+        box-shadow: 0 0 25px red, 0 0 50px rgba(255,0,0,.6);
+    }
 }
 
-/* CABEÇALHO */
-.etiqueta {
-  display: inline-block;
-  padding: 8px 15px;
-  border: 1px solid rgba(255, 220, 130, .4);
-  border-radius: 30px;
-  color: #ffe8a0;
-  background: rgba(255, 255, 255, .06);
-  font-size: 11px;
-  font-weight: bold;
-  letter-spacing: 2px;
-}
-
-.papai-noel {
-  font-size: 65px;
-  margin: 20px 0 5px;
-  display: block;
-  filter: drop-shadow(0 0 15px rgba(255,255,255,.2));
-  animation: balancar 3s ease-in-out infinite;
-}
-
-@keyframes balancar {
-  0%, 100% { transform: translateY(0) rotate(-3deg); }
-  50% { transform: translateY(-8px) rotate(3deg); }
+.logo {
+    width: 145px;
+    height: 145px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 12px #ff1717);
+    mix-blend-mode: screen;
 }
 
 h1 {
-  margin-top: 5px;
-  font-size: 36px;
-  font-weight: 900;
-  letter-spacing: 2px;
-  color: #fff0bd;
-  text-shadow: 0 3px 15px rgba(255, 193, 74, .35);
+    font-size: 34px;
+    font-weight: 900;
+    font-style: italic;
+    color: white;
+    text-shadow: 0 0 8px red, 0 0 20px red;
+    letter-spacing: 2px;
+}
+
+h1 span {
+    color: #ff1717;
 }
 
 .subtitulo {
-  margin-top: 7px;
-  font-size: 12px;
-  letter-spacing: 3px;
-  color: #45e5a0;
-  font-weight: bold;
+    color: #ffb0b0;
+    font-size: 13px;
+    margin-top: 9px;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
 }
 
-/* DIVISÓRIA */
-.divisoria {
-  height: 1px;
-  margin: 24px 0;
-  background: linear-gradient(90deg, transparent, #e8c36a, transparent);
+.status {
+    display: inline-block;
+    padding: 8px 15px;
+    margin-bottom: 22px;
+    border: 1px solid #ff2525;
+    border-radius: 20px;
+    color: #ff5555;
+    font-size: 12px;
+    box-shadow: 0 0 10px rgba(255,0,0,.4);
 }
 
-/* DESCRIÇÃO */
 .descricao {
-  color: #d6e9df;
-  font-size: 14px;
-  line-height: 1.8;
-  margin-bottom: 24px;
+    color: #ddd;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 25px;
 }
 
-.destaque {
-  color: #ffe39a;
-  font-weight: bold;
-}
-
-/* BOTÃO */
 .botao {
-  position: relative;
-  width: 100%;
-  padding: 17px 12px;
-  border: 1px solid #ffdc89;
-  border-radius: 13px;
-  color: white;
-  font-size: 17px;
-  font-weight: 900;
-  letter-spacing: 1px;
-  cursor: pointer;
-  background: linear-gradient(110deg, #a81729, #e22e3c, #a81729);
-  background-size: 200% 100%;
-  box-shadow: 0 5px 22px rgba(220, 36, 52, .3);
-  transition: .25s;
-  animation: brilho 3s linear infinite;
-}
-
-@keyframes brilho {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 9px;
+    color: white;
+    background: linear-gradient(135deg, #ff3030, #a00000);
+    font-size: 17px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    cursor: pointer;
+    box-shadow: 0 0 15px #ff0000;
+    transition: .25s;
 }
 
 .botao:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(255, 50, 65, .45);
+    transform: scale(1.04);
+    box-shadow: 0 0 28px #ff0000;
 }
 
 .botao:active {
-  transform: scale(.97);
+    transform: scale(.97);
 }
 
-/* RODAPÉ */
+.aviso {
+    color: #999;
+    font-size: 11px;
+    margin-top: 20px;
+}
+
 .rodape {
-  margin-top: 25px;
-  color: #91aa9d;
-  font-size: 11px;
-  line-height: 1.8;
-}
-
-.rodape strong {
-  color: #e8c36a;
-}
-
-.decoracao {
-  margin-top: 15px;
-  font-size: 19px;
-  letter-spacing: 7px;
-}
-
-@media (max-width: 380px) {
-  .painel { padding: 27px 18px; }
-  h1 { font-size: 31px; }
+    margin-top: 17px;
+    color: #ff4444;
+    font-size: 11px;
+    letter-spacing: 2px;
 }
 </style>
 </head>
 
 <body>
 
-<canvas id="snow"></canvas>
+<canvas id="efeitoFundo"></canvas>
 
-<div class="luzes">
-  <span></span><span></span><span></span>
-  <span></span><span></span><span></span>
-  <span></span><span></span><span></span>
-  <span></span><span></span><span></span>
-</div>
+<div class="container">
 
-<main class="container">
-  <section class="painel">
+    <img src="caveira.png" class="logo" alt="FFH4X Prime">
 
-    <div class="etiqueta">
-      ❄ PAINEL ONLINE ❄
-    </div>
+    <h1>FFH4X <span>PRIME</span></h1>
 
-    <span class="papai-noel">🎅</span>
+    <div class="subtitulo">PAINEL ONLINE</div>
 
-    <h1>TNT APK</h1>
-
-    <div class="subtitulo">
-      EDIÇÃO ESPECIAL DE NATAL
-    </div>
-
-    <div class="divisoria"></div>
+    <div class="status">● SISTEMA ONLINE</div>
 
     <p class="descricao">
-      Bem-vindo ao painel oficial do
-      <span class="destaque">TNT APK!</span>
-      <br><br>
-      Passe pelo encurtador para liberar sua
-      <span class="destaque">KEY totalmente gratuita</span>
-      e acessar a proxy.
+        Bem-vindo ao FFH4X Prime!<br>
+        Clique no botão abaixo para liberar seu acesso.
     </p>
 
     <button class="botao" onclick="gerarKey()">
-      🎁 GERAR KEY AGORA
+        GERAR KEY
     </button>
 
+    <div class="aviso">
+        Complete a etapa de acesso para continuar.
+    </div>
+
     <div class="rodape">
-      Que seu Natal seja cheio de alegria!<br>
-      <strong>TNT APK © 2026</strong>
+        FFH4X PRIME © 2026
     </div>
 
-    <div class="decoracao">
-      🎄 ❄️ 🎁 ❄️ 🎄
-    </div>
-
-  </section>
-</main>
+</div>
 
 <script>
-/* REDIRECIONAMENTO */
 function gerarKey() {
-  window.location.href =
+    window.location.href =
     "https://alpharede.com/McI7FizXaTA";
 }
 
-/* ANIMAÇÃO DE NEVE */
-const canvas = document.getElementById("snow");
+// ANIMAÇÃO DE PARTÍCULAS VERMELHAS
+const canvas = document.getElementById("efeitoFundo");
 const ctx = canvas.getContext("2d");
 
-let flocos = [];
+let particulas = [];
 
 function ajustarTela() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  flocos = [];
-
-  const quantidade = Math.min(
-    150,
-    Math.floor(window.innerWidth / 4)
-  );
-
-  for (let i = 0; i < quantidade; i++) {
-    flocos.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      raio: Math.random() * 3 + 1,
-      velocidade: Math.random() * 1.5 + .5,
-      vento: Math.random() * .8 - .4,
-      opacidade: Math.random() * .6 + .3
-    });
-  }
-}
-
-function animarNeve() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  flocos.forEach(f => {
-    ctx.beginPath();
-    ctx.arc(f.x, f.y, f.raio, 0, Math.PI * 2);
-
-    ctx.fillStyle = `rgba(255,255,255,${f.opacidade})`;
-    ctx.fill();
-
-    f.y += f.velocidade;
-    f.x += f.vento;
-
-    if (f.y > canvas.height + 5) {
-      f.y = -5;
-      f.x = Math.random() * canvas.width;
-    }
-
-    if (f.x > canvas.width + 5) f.x = -5;
-    if (f.x < -5) f.x = canvas.width + 5;
-  });
-
-  requestAnimationFrame(animarNeve);
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    canvas.style.width = window.innerWidth + "px";
+    canvas.style.height = window.innerHeight + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 }
 
 window.addEventListener("resize", ajustarTela);
-
 ajustarTela();
-animarNeve();
+
+function criarParticulas() {
+    particulas = [];
+
+    for (let i = 0; i < 90; i++) {
+        particulas.push({
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight,
+            tamanho: Math.random() * 2.5 + 1,
+            velocidade: Math.random() * 1.5 + 0.4,
+            brilho: Math.random()
+        });
+    }
+}
+
+criarParticulas();
+
+function animarFundo() {
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+    particulas.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.tamanho, 0, Math.PI * 2);
+
+        ctx.fillStyle = `rgba(255, ${Math.floor(p.brilho * 45)}, 20, 0.9)`;
+        ctx.shadowBlur = 15;
+        ctx.shadowColor = "#ff0000";
+        ctx.fill();
+
+        p.y -= p.velocidade;
+        p.x += Math.sin(p.y * 0.01) * 0.5;
+
+        if (p.y < -5) {
+            p.y = window.innerHeight + 5;
+            p.x = Math.random() * window.innerWidth;
+        }
+    });
+
+    ctx.shadowBlur = 0;
+    requestAnimationFrame(animarFundo);
+}
+
+animarFundo();
 </script>
 
 </body>
