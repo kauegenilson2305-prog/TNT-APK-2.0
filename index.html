@@ -3,185 +3,222 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080000">
-<title>FFH4X Prime | Painel Online</title>
+<title>FFH4X PRIME - Painel Online</title>
 
 <style>
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    min-height: 100vh;
-    font-family: Arial, sans-serif;
-    color: white;
-    background:
-        linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.85)),
-        url("banner.png") center center / cover fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    animation: energiaFundo 5s infinite alternate;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: white;
+  background: #050000;
+  overflow-x: hidden;
 }
 
-@keyframes energiaFundo {
-    from { background-color: #080000; }
-    to { background-color: #350000; }
+/* FUNDO COMPLETO COM CAVEIRAS */
+.fundo {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(rgba(5,0,0,.48), rgba(5,0,0,.65)),
+    url("caveira.jpg");
+  background-size: cover, 175px 175px;
+  background-position: center, center;
+  background-repeat: no-repeat, repeat;
+  filter: saturate(1.4);
+  animation: fundoVivo 8s ease-in-out infinite alternate;
 }
 
-/* Canvas de animação */
-#efeitoFundo {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
+@keyframes fundoVivo {
+  from { filter: brightness(.55) saturate(1.2); }
+  to { filter: brightness(.85) saturate(1.7); }
 }
 
-/* Brilho vermelho no fundo */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(
-        circle at center,
-        transparent 10%,
-        rgba(0,0,0,.65) 100%
-    );
-    pointer-events: none;
-    z-index: 0;
+/* ILUMINAÇÃO VERMELHA */
+.luz {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 10% 20%, rgba(255,0,0,.25), transparent 35%),
+    radial-gradient(ellipse at 90% 80%, rgba(255,0,0,.22), transparent 40%);
+  animation: luz 4s infinite alternate;
 }
 
-.container {
-    position: relative;
-    z-index: 2;
-    width: 90%;
-    max-width: 390px;
-    padding: 28px 23px;
-    text-align: center;
-    background: rgba(10, 0, 0, .88);
-    border: 2px solid #ff1717;
-    border-radius: 18px;
-    box-shadow:
-        0 0 15px #ff0000,
-        0 0 35px rgba(255,0,0,.55),
-        inset 0 0 20px rgba(255,0,0,.12);
-    animation: entrada 1s ease, pulsar 3s infinite alternate;
+@keyframes luz {
+  from { opacity: .4; }
+  to { opacity: 1; }
+}
+
+/* CANVAS DE PARTÍCULAS */
+#particulas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* CONTEÚDO */
+.conteudo {
+  position: relative;
+  z-index: 3;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 35px 16px;
+}
+
+.painel {
+  width: 100%;
+  max-width: 430px;
+  padding: 35px 25px;
+  text-align: center;
+  background: rgba(5,0,0,.79);
+  backdrop-filter: blur(7px);
+  border: 2px solid #ff1616;
+  border-radius: 22px;
+  box-shadow:
+    0 0 18px #ff0000,
+    0 0 45px rgba(255,0,0,.45),
+    inset 0 0 30px rgba(255,0,0,.13);
+  animation: entrada 1s ease, pulsar 3s infinite alternate;
 }
 
 @keyframes entrada {
-    from { opacity: 0; transform: scale(.85); }
-    to { opacity: 1; transform: scale(1); }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes pulsar {
-    from {
-        box-shadow: 0 0 12px red, 0 0 25px rgba(255,0,0,.3);
-    }
-    to {
-        box-shadow: 0 0 25px red, 0 0 50px rgba(255,0,0,.6);
-    }
+  from { border-color: #a90000; }
+  to { border-color: #ff4141; }
 }
 
 .logo {
-    width: 145px;
-    height: 145px;
-    object-fit: contain;
-    margin-bottom: 10px;
-    filter: drop-shadow(0 0 12px #ff1717);
-    mix-blend-mode: screen;
+  width: 145px;
+  height: 145px;
+  object-fit: contain;
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 0 15px red);
+  animation: flutuar 3s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
 }
 
 h1 {
-    font-size: 34px;
-    font-weight: 900;
-    font-style: italic;
-    color: white;
-    text-shadow: 0 0 8px red, 0 0 20px red;
-    letter-spacing: 2px;
+  font-size: clamp(29px, 8vw, 38px);
+  font-weight: 900;
+  font-style: italic;
+  margin-top: 12px;
+  text-shadow: 0 0 12px red;
 }
 
 h1 span {
-    color: #ff1717;
+  color: #ff1717;
 }
 
 .subtitulo {
-    color: #ffb0b0;
-    font-size: 13px;
-    margin-top: 9px;
-    margin-bottom: 25px;
-    letter-spacing: 2px;
+  color: #ffaaaa;
+  letter-spacing: 4px;
+  margin-top: 12px;
+  font-size: 14px;
 }
 
 .status {
-    display: inline-block;
-    padding: 8px 15px;
-    margin-bottom: 22px;
-    border: 1px solid #ff2525;
-    border-radius: 20px;
-    color: #ff5555;
-    font-size: 12px;
-    box-shadow: 0 0 10px rgba(255,0,0,.4);
+  display: inline-block;
+  margin: 27px 0;
+  padding: 12px 20px;
+  border: 1px solid #ff2929;
+  border-radius: 30px;
+  color: #ff6969;
+  box-shadow: 0 0 15px rgba(255,0,0,.5);
 }
 
 .descricao {
-    color: #ddd;
-    font-size: 14px;
-    line-height: 1.6;
-    margin-bottom: 25px;
+  color: #eee;
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 28px;
 }
 
 .botao {
-    width: 100%;
-    padding: 16px;
-    border: none;
-    border-radius: 9px;
-    color: white;
-    background: linear-gradient(135deg, #ff3030, #a00000);
-    font-size: 17px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    cursor: pointer;
-    box-shadow: 0 0 15px #ff0000;
-    transition: .25s;
+  width: 100%;
+  padding: 19px 10px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(120deg,#ff3030,#a00000);
+  color: white;
+  font-size: 19px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  box-shadow: 0 0 18px red;
+  cursor: pointer;
+  transition: .3s;
 }
 
 .botao:hover {
-    transform: scale(1.04);
-    box-shadow: 0 0 28px #ff0000;
+  transform: scale(1.04);
+  box-shadow: 0 0 35px red;
 }
 
 .botao:active {
-    transform: scale(.97);
+  transform: scale(.97);
 }
 
 .aviso {
-    color: #999;
-    font-size: 11px;
-    margin-top: 20px;
+  color: #aaa;
+  font-size: 12px;
+  margin-top: 25px;
 }
 
 .rodape {
-    margin-top: 17px;
-    color: #ff4444;
-    font-size: 11px;
-    letter-spacing: 2px;
+  color: #ff5252;
+  letter-spacing: 3px;
+  font-size: 12px;
+  margin-top: 24px;
 }
+
+/* CELULARES */
+@media(max-width:480px) {
+  .conteudo {
+    padding: 25px 13px;
+  }
+
+  .painel {
+    padding: 28px 19px;
+  }
+}
+
 </style>
 </head>
 
 <body>
 
-<canvas id="efeitoFundo"></canvas>
+<div class="fundo"></div>
+<div class="luz"></div>
+<canvas id="particulas"></canvas>
 
-<div class="container">
+<main class="conteudo">
 
-    <img src="caveira.png" class="logo" alt="FFH4X Prime">
+  <section class="painel">
+
+    <img src="caveira.jpg" class="logo" alt="FFH4X Prime">
 
     <h1>FFH4X <span>PRIME</span></h1>
 
@@ -190,90 +227,92 @@ h1 span {
     <div class="status">● SISTEMA ONLINE</div>
 
     <p class="descricao">
-        Bem-vindo ao FFH4X Prime!<br>
-        Clique no botão abaixo para liberar seu acesso.
+      Bem-vindo ao FFH4X Prime!<br>
+      Clique no botão abaixo para liberar seu acesso.
     </p>
 
     <button class="botao" onclick="gerarKey()">
-        GERAR KEY
+      GERAR KEY
     </button>
 
     <div class="aviso">
-        Complete a etapa de acesso para continuar.
+      Complete a etapa de acesso para continuar.
     </div>
 
     <div class="rodape">
-        FFH4X PRIME © 2026
+      FFH4X PRIME © 2026
     </div>
 
-</div>
+  </section>
+
+</main>
 
 <script>
 function gerarKey() {
-    window.location.href =
-    "https://alpharede.com/McI7FizXaTA";
+  window.location.href =
+  "https://alpharede.com/McI7FizXaTA";
 }
 
-// ANIMAÇÃO DE PARTÍCULAS VERMELHAS
-const canvas = document.getElementById("efeitoFundo");
+/* PARTÍCULAS E FAÍSCAS */
+const canvas = document.getElementById("particulas");
 const ctx = canvas.getContext("2d");
 
-let particulas = [];
+let pontos = [];
 
-function ajustarTela() {
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width = window.innerWidth * dpr;
-    canvas.height = window.innerHeight * dpr;
-    canvas.style.width = window.innerWidth + "px";
-    canvas.style.height = window.innerHeight + "px";
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+function ajustar() {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  canvas.width = innerWidth * dpr;
+  canvas.height = innerHeight * dpr;
+  canvas.style.width = innerWidth + "px";
+  canvas.style.height = innerHeight + "px";
+  ctx.setTransform(dpr,0,0,dpr,0,0);
 }
 
-window.addEventListener("resize", ajustarTela);
-ajustarTela();
-
-function criarParticulas() {
-    particulas = [];
-
-    for (let i = 0; i < 90; i++) {
-        particulas.push({
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-            tamanho: Math.random() * 2.5 + 1,
-            velocidade: Math.random() * 1.5 + 0.4,
-            brilho: Math.random()
-        });
-    }
-}
-
-criarParticulas();
-
-function animarFundo() {
-    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-
-    particulas.forEach(p => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.tamanho, 0, Math.PI * 2);
-
-        ctx.fillStyle = `rgba(255, ${Math.floor(p.brilho * 45)}, 20, 0.9)`;
-        ctx.shadowBlur = 15;
-        ctx.shadowColor = "#ff0000";
-        ctx.fill();
-
-        p.y -= p.velocidade;
-        p.x += Math.sin(p.y * 0.01) * 0.5;
-
-        if (p.y < -5) {
-            p.y = window.innerHeight + 5;
-            p.x = Math.random() * window.innerWidth;
-        }
+function criar() {
+  pontos = [];
+  for(let i=0;i<100;i++) {
+    pontos.push({
+      x:Math.random()*innerWidth,
+      y:Math.random()*innerHeight,
+      r:Math.random()*2.5+1,
+      v:Math.random()*1.5+.3,
+      a:Math.random()
     });
-
-    ctx.shadowBlur = 0;
-    requestAnimationFrame(animarFundo);
+  }
 }
 
-animarFundo();
+function animar() {
+  ctx.clearRect(0,0,innerWidth,innerHeight);
+
+  pontos.forEach(p=>{
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle = `rgba(255,${Math.floor(p.a*30)},20,.9)`;
+    ctx.shadowBlur = 18;
+    ctx.shadowColor = "red";
+    ctx.fill();
+
+    p.y -= p.v;
+    p.x += Math.sin(p.y*.012)*.5;
+
+    if(p.y < -5) {
+      p.y = innerHeight+5;
+      p.x = Math.random()*innerWidth;
+    }
+  });
+
+  ctx.shadowBlur = 0;
+  requestAnimationFrame(animar);
+}
+
+window.addEventListener("resize",()=>{
+  ajustar();
+  criar();
+});
+
+ajustar();
+criar();
+animar();
 </script>
 
 </body>
